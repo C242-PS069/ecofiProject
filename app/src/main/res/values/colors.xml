@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="teal_700">#00796B</color>
-    <color name="teal_200">#80CBC4</color>
+    <!-- Primary Colors -->
+    <color name="primary">#468BCD</color> <!-- Warna utama (contoh hijau) -->
+    <color name="primary_dark">#468BCD</color> <!-- Warna utama yang lebih gelap -->
+    <color name="primary_light">#C8E6C9</color> <!-- Warna utama yang lebih terang -->
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#76E2C6</color> <!-- Warna pendukung (contoh biru) -->
+    <color name="secondary_dark">#36C0CC</color>
+    <color name="secondary_light">#B3E5FC</color>
+
+    <!-- Neutral Colors -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="gray">#9E9E9E</color> <!-- Warna abu-abu netral -->
+    <color name="light_gray">#E0E0E0</color> <!-- Warna abu-abu terang -->
+    <color name="dark_gray">#616161</color> <!-- Warna abu-abu gelap -->
+
+    <!-- Error and Warning Colors -->
+    <color name="error">#F44336</color> <!-- Warna untuk pesan error -->
+    <color name="warning">#FF9800</color> <!-- Warna untuk peringatan -->
+    <color name="success">#4CAF50</color> <!-- Warna untuk status sukses -->
+
+    <!-- Background Colors -->
+    <color name="background_light">#F5F5F5</color> <!-- Warna latar terang -->
+    <color name="background_dark">#212121</color> <!-- Warna latar gelap -->
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color> <!-- Warna teks utama -->
+    <color name="text_secondary">#2D2D2D</color> <!-- Warna teks sekunder -->
+
+    <!-- Additional Custom Colors -->
+    <color name="teal_700">#36C0CC</color>
+    <color name="teal_200">#80CBC4</color>
 </resources>

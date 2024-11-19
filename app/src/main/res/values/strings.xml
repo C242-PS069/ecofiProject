@@ -1,3 +1,25 @@
 <resources>
+    <!-- General Strings -->
     <string name="app_name">ecofiProject</string>
+    <string name="save_changes">Save changes</string>
+    <string name="edit_profile">Edit Profile</string>
+
+    <!-- Profile Section -->
+    <string name="profile_picture">Profile Picture</string>
+    <string name="edit_picture">Edit Picture</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="theme">Switch to dark mode</string>
+
+    <!-- Messages -->
+    <string name="changes_saved">Your changes have been saved successfully.</string>
+    <string name="invalid_email">Please enter a valid email address.</string>
+    <string name="empty_name">Name cannot be empty.</string>
+    <string name="saving_changes">Saving changes...</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_scan">Scan</string>
+    <string name="nav_history">History</string>
+    <string name="nav_profile">Profile</string>
 </resources>
