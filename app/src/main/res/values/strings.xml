@@ -4,6 +4,10 @@
     <string name="save_changes">Save changes</string>
     <string name="edit_profile">Edit Profile</string>
 
+    <!-- Home Section -->
+    <string name="article_cover">Article Cover</string>
+    <string name="article_title">Article Title</string>
+
     <!-- Profile Section -->
     <string name="profile_picture">Profile Picture</string>
     <string name="edit_picture">Edit Picture</string>
