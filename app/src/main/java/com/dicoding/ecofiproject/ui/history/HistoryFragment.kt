@@ -1,4 +1,4 @@
-package com.dicoding.ecofiproject.scan
+package com.dicoding.ecofiproject.ui.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dicoding.ecofiproject.R
 
-class ScanFragment : Fragment() {
+class HistoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_scan, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 }

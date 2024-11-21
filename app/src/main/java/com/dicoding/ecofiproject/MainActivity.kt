@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dicoding.ecofiproject.databinding.ActivityMainBinding
-import com.dicoding.ecofiproject.history.HistoryFragment
-import com.dicoding.ecofiproject.home.HomeFragment
-import com.dicoding.ecofiproject.profile.ProfileFragment
-import com.dicoding.ecofiproject.scan.ScanFragment
+import com.dicoding.ecofiproject.ui.history.HistoryFragment
+import com.dicoding.ecofiproject.ui.home.HomeFragment
+import com.dicoding.ecofiproject.ui.profile.ProfileFragment
+import com.dicoding.ecofiproject.ui.scan.ScanFragment
 
 class MainActivity : AppCompatActivity() {
 

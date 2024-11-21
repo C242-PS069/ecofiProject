@@ -22,4 +22,10 @@
     <string name="nav_scan">Scan</string>
     <string name="nav_history">History</string>
     <string name="nav_profile">Profile</string>
+
+    <!-- Material Icon -->
+    <string name="material_icon">Material Icon</string>
+
+    <!-- Back Icon -->
+    <string name="back_icon">Back Icon</string>
 </resources>
