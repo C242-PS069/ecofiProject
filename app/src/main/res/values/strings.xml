@@ -7,6 +7,11 @@
     <!-- Home Section -->
     <string name="article_cover">Article Cover</string>
     <string name="article_title">Article Title</string>
+    <string name="article_cover_description">Image representing the article cover</string>
+    <string name="article_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="read_more">Read More</string>
+    <string name="read_more_description">Tap to read the full article</string>
+    <string name="card_description">Clickable card with article details</string>
 
     <!-- Profile Section -->
     <string name="profile_picture">Profile Picture</string>
