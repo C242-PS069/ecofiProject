@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dicoding.ecofiproject.databinding.ActivityMainBinding
-import com.dicoding.ecofiproject.ui.history.HistoryFragment
 import com.dicoding.ecofiproject.ui.home.HomeFragment
 import com.dicoding.ecofiproject.ui.profile.ProfileFragment
 import com.dicoding.ecofiproject.ui.scan.ScanFragment
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> loadFragment(HomeFragment())
                 R.id.nav_scan -> loadFragment(ScanFragment())
-                R.id.nav_history -> loadFragment(HistoryFragment())
                 R.id.nav_profile -> loadFragment(ProfileFragment())
                 else -> false
             }
