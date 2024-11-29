@@ -29,7 +29,6 @@
     <!-- Bottom Navigation -->
     <string name="nav_home">Home</string>
     <string name="nav_scan">Scan</string>
-    <string name="nav_history">History</string>
     <string name="nav_profile">Profile</string>
 
     <!-- Material Icon -->
@@ -37,4 +36,8 @@
 
     <!-- Back Icon -->
     <string name="back_icon">Back Icon</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+
 </resources>
