@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    
+
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
@@ -14,49 +14,39 @@
         android:background="@drawable/bg_view"
          />
 
-<GridLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="95dp"
-    android:layout_gravity="center">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        app:cardCornerRadius="10dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="320dp"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="90dp"
+            android:background="@color/background_light">
+
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_launcher_background">
-            </ImageView>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Kreasikan"
-    android:textSize="10sp"
-    android:textStyle="bold"
-    android:layout_marginTop="3dp"
-    android:layout_marginLeft="12dp">
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_launcher_background"></ImageView>
 
-</TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="3dp"
+                android:text="Kreasikan"
+                android:textSize="10sp"
+                android:textStyle="bold"></TextView>
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <LinearLayout
+        android:layout_marginTop="180dp"
         android:layout_width="match_parent"
         android:layout_height="564dp"
-        android:layout_row="1"
-        android:layout_column="0"
         android:orientation="vertical">
 
         <TextView
@@ -76,20 +66,42 @@
             android:id="@+id/horizontal_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="horizontal"
-            tools:listitem="@layout/item_article" />
+            android:scrollbars="horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="214dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/light_gray"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Indormasi"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/informasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal" />
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-</GridLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="65dp"
