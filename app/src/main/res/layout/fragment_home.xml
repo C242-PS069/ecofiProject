@@ -21,7 +21,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="95dp"
         android:layout_marginRight="80dp"
-        android:background="@drawable/rounded_background"
+        android:background="@drawable/rounded_background_input1"
         android:orientation="vertical">
 
 
