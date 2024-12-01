@@ -12,18 +12,23 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/secondary"
+        android:background="@drawable/rounded_bottom"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+
+        <!-- Tambahkan TextView untuk My Profile -->
+        <TextView
+            android:id="@+id/tv_my_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#34BEC7"
-            app:title="@string/profile_settings"
-            app:titleTextColor="@android:color/white"
-            app:navigationIcon="@drawable/ic_back" />
+            android:gravity="center"
+            android:text="@string/my_profile"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Konten ScrollView -->

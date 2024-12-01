@@ -40,5 +40,7 @@
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="upload">Upload</string>
+    <string name="my_profile">My profile</string>
+    <string name="my_scan">Scan</string>
 
 </resources>

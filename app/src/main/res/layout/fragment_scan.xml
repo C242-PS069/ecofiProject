@@ -13,32 +13,38 @@
 
         <!-- AppBar untuk Header -->
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/teal_700"
+            android:layout_height="69dp"
+            android:background="@drawable/rounded_bottom"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             tools:ignore="MissingConstraints">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <TextView
+                android:id="@+id/tv_my_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/teal_700"
-                app:titleTextColor="@android:color/white"
-                app:navigationIcon="@drawable/ic_back" />
+                android:gravity="center"
+                android:text="@string/my_scan"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
             android:id="@+id/previewImageView"
-            android:layout_width="300dp"
-            android:layout_height="500dp"
+            android:layout_width="358dp"
+            android:layout_height="450dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/cameraButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"

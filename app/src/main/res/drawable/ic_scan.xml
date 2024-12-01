@@ -4,30 +4,23 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
 
-    <!-- Lingkaran Utama -->
+    <!-- Garis Sudut Kiri Atas -->
     <path
-        android:fillColor="#444446"
-        android:pathData="M12,2a10,10 0 1,0 10,10A10,10 0 0,0 12,2zM12,18a6,6 0 1,1 6,-6A6,6 0 0,1 12,18z" />
+        android:fillColor="#000000"
+        android:pathData="M3,3h5v2h-3v3h-2v-5z" />
 
-    <!-- Garis Scan Horizontal -->
+    <!-- Garis Sudut Kanan Atas -->
     <path
-        android:fillColor="#FF5722"
-        android:pathData="M6,12h12"
-        android:strokeWidth="1"
-        android:strokeColor="#FF5722" />
+        android:fillColor="#000000"
+        android:pathData="M21,3v5h-2v-3h-3v-2h5z" />
 
-    <!-- Garis Scan Vertikal Kiri -->
+    <!-- Garis Sudut Kiri Bawah -->
     <path
-        android:fillColor="#FF5722"
-        android:pathData="M6,6v12"
-        android:strokeWidth="1"
-        android:strokeColor="#FF5722" />
+        android:fillColor="#000000"
+        android:pathData="M3,21v-5h2v3h3v2h-5z" />
 
-    <!-- Garis Scan Vertikal Kanan -->
+    <!-- Garis Sudut Kanan Bawah -->
     <path
-        android:fillColor="#FF5722"
-        android:pathData="M18,6v12"
-        android:strokeWidth="1"
-        android:strokeColor="#FF5722" />
-
+        android:fillColor="#000000"
+        android:pathData="M21,21h-5v-2h3v-3h2v5z" />
 </vector>
