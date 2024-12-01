@@ -15,35 +15,35 @@
          />
 
 
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="80dp"
-            android:orientation="vertical"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginTop="90dp"
-            android:background="@color/background_light">
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/rounded_background"
+        android:orientation="vertical">
 
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/ic_launcher_background"></ImageView>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_launcher_background"></ImageView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="3dp"
-                android:text="Kreasikan"
-                android:textSize="10sp"
-                android:textStyle="bold">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="3dp"
+            android:text="Kreasikan"
+            android:textSize="10sp"
+            android:textStyle="bold">
 
-            </TextView>
+        </TextView>
 
-        </LinearLayout>
+    </LinearLayout>
 
 
 

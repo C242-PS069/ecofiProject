@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Tombol Back -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Scan"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black" />
+    </RelativeLayout>
+
+    <!-- Hasil Scan / Upload -->
+    <ImageView
+        android:id="@+id/scan_result_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_image"
+        android:contentDescription="Hasil Scan"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Label Detected Ingredients -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detected Ingredients"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/black" />
+
+    <!-- Hasil Deteksi -->
+    <LinearLayout
+        android:id="@+id/detected_items_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Contoh hasil scan dengan ikon -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/icon_object_1"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Object Icon"
+                android:src="@drawable/ic_bottle" />
+
+            <TextView
+                android:id="@+id/detected_item_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Object: Plastic Bottle"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/detection_accuracy_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="95%"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_green_dark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/icon_object_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src=""
+                android:contentDescription="Object Icon"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/detected_item_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Object: Glass"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/detection_accuracy_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="85%"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_green_dark" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Tombol Submit -->
+    <LinearLayout
+        android:id="@+id/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_background_input3"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Submit"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>
