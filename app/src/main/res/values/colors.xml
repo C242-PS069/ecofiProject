@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="background">#FFFFFF</color>
+    <color name="textColorPrimary">#000000</color>
+        <!-- Tambahkan warna lainnya di sini -->
+
     <!-- Primary Colors -->
     <color name="primary">#468BCD</color> <!-- Warna utama (contoh hijau) -->
     <color name="primary_dark">#468BCD</color> <!-- Warna utama yang lebih gelap -->
@@ -28,7 +33,7 @@
 
     <!-- Text Colors -->
     <color name="text_primary">#212121</color> <!-- Warna teks utama -->
-    <color name="text_secondary">#2D2D2D</color> <!-- Warna teks sekunder -->
+    <color name="text_secondary">#1B1A1A</color> <!-- Warna teks sekunder -->
 
     <!-- Additional Custom Colors -->
     <color name="teal_700">#36C0CC</color>

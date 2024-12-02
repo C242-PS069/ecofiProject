@@ -104,7 +104,6 @@
                 android:id="@+id/icon_object_2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src=""
                 android:contentDescription="Object Icon"
                 android:layout_marginEnd="8dp" />
 
