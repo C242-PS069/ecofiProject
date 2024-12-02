@@ -48,6 +48,7 @@ dependencies {
     implementation (libs.androidx.fragment.ktx)
     implementation ("me.relex:circleindicator:2.1.6")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.navigation.fragment.ktx)
 
     // Testing
     testImplementation (libs.junit)
