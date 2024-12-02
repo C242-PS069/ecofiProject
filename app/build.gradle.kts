@@ -50,8 +50,16 @@ dependencies {
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.preference.ktx)
-
-    // Testing
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.code.gson:gson:2.8.8")
+    implementation (libs.androidx.datastore.preferences)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences.core.jvm)
     testImplementation (libs.junit)
     androidTestImplementation (libs.androidx.junit.v115)
     androidTestImplementation (libs.androidx.espresso.core.v351)

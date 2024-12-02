@@ -1,4 +1,4 @@
 package com.dicoding.ecofiproject.ui.register
 
-class RegisterFragment {
+class RegisterViewModel {
 }
