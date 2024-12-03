@@ -1,61 +1,88 @@
 package com.dicoding.ecofiproject.ui.register
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.ecofiproject.R
+import androidx.lifecycle.Observer
+import com.dicoding.ecofiproject.ViewModelFactory
+import com.dicoding.ecofiproject.databinding.ActivityRegisterBinding
 import com.dicoding.ecofiproject.ui.login.LoginActivity
+import androidx.appcompat.app.AlertDialog
+import android.content.Intent
+import com.dicoding.ecofiproject.utils.Result
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var nameInput: EditText
-    private lateinit var emailInput: EditText
-    private lateinit var passwordInput: EditText
-    private lateinit var registerButton: Button
-    private lateinit var loginText: TextView
+    private lateinit var binding: ActivityRegisterBinding
+    private val registerViewModel: RegisterViewModel by viewModels {
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register) // Pastikan layout sudah benar
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Inisialisasi view
-        nameInput = findViewById(R.id.nameInput)
-        emailInput = findViewById(R.id.emailInput)
-        passwordInput = findViewById(R.id.passwordInput)
-        registerButton = findViewById(R.id.registerButton)
-        loginText = findViewById(R.id.loginText)
+        setupView()
+        setupAction()
+    }
 
-        // Menangani klik tombol Register
-        registerButton.setOnClickListener {
-            val name = nameInput.text.toString()
-            val email = emailInput.text.toString()
-            val password = passwordInput.text.toString()
+    private fun setupView() {
+        supportActionBar?.hide()
+    }
 
-            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-                // Panggil fungsi untuk menangani registrasi (misalnya API atau penyimpanan lokal)
-                // Fungsi ini hanya berupa contoh, sesuaikan dengan cara pendaftaran yang digunakan
+    private fun setupAction() {
+        // Menangani klik tombol register
+        binding.registerButton.setOnClickListener {
+            val name = binding.nameInput.text.toString()
+            val email = binding.emailInput.text.toString()
+            val password = binding.passwordInput.text.toString()
 
-                // Jika berhasil registrasi
-                Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+            // Panggil fungsi register dari ViewModel
+            registerViewModel.register(name, email, password)
+        }
 
-                // Setelah registrasi sukses, pindah ke LoginActivity
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish() // Menutup RegisterActivity
-            } else {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        // Menangani live data dari ViewModel
+        registerViewModel.registerResult.observe(this, Observer { result ->
+            when (result) {
+                is Result.Loading -> {
+                    // Tampilkan loading
+                    showLoading(true)
+                }
+                is Result.Success -> {
+                    // Pendaftaran berhasil
+                    showLoading(false)
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Selamat!")
+                        setMessage(result.data)
+                        setPositiveButton("OK") { _, _ ->
+                            // Kembali ke LoginActivity setelah pendaftaran berhasil
+                            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        create()
+                        show()
+                    }
+                }
+                is Result.Error -> {
+                    // Tampilkan pesan error
+                    showLoading(false)
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Error")
+                        setMessage(result.message)
+                        setPositiveButton("OK", null)
+                        create()
+                        show()
+                    }
+                }
             }
-        }
+        })
+    }
 
-        // Menangani klik teks "Already have an account? Login"
-        loginText.setOnClickListener {
-            // Pindah ke LoginActivity ketika teks Login dipencet
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

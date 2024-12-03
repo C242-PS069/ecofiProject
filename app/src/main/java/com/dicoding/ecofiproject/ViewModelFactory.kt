@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.ecofiproject.data.UserRepository
 import com.dicoding.ecofiproject.di.Injection
 import com.dicoding.ecofiproject.ui.login.LoginViewModel
+import com.dicoding.ecofiproject.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(private val userRepository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -15,7 +16,9 @@ class ViewModelFactory private constructor(private val userRepository: UserRepos
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(userRepository) as T
             }
-            // Tambahkan ViewModel lain jika diperlukan
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                RegisterViewModel(userRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
