@@ -6,32 +6,30 @@ import com.dicoding.ecofiproject.data.response.LoginResponse
 import com.dicoding.ecofiproject.data.response.RegisterResponse
 import com.dicoding.ecofiproject.data.pref.UserModel
 import com.dicoding.ecofiproject.data.pref.UserPreference
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
-import retrofit2.Call
 import retrofit2.Response
 
 class UserRepository private constructor(
     private val userPreference: UserPreference
 ) {
-    suspend fun login(email: String, password: String): Call<LoginResponse> {
-        return withContext(Dispatchers.IO) {
+    suspend fun login(email: String, password: String): Response<LoginResponse> {
+        return try {
             val response = ApiConfig.getApiService("").login(email, password)
             Log.d("UserRepository", "Login response: $response")
             response
+        } catch (e: Exception) {
+            throw Exception("Network request failed: ${e.message}")
         }
     }
 
-    suspend fun register(name: String, email: String, password: String): Call<RegisterResponse> {
-        return withContext(Dispatchers.IO) {
-            try {
-                ApiConfig.getApiService("").register(name, email, password)
-            } catch (e: Exception) {
-                throw Exception("Network request failed: ${e.message}")
-            }
+    suspend fun register(name: String, email: String, password: String): Response<RegisterResponse> {
+        return try {
+            val response = ApiConfig.getApiService("").register(name, email, password)
+            Log.d("UserRepository", "Register response: $response")
+            response
+        } catch (e: Exception) {
+            throw Exception("Network request failed: ${e.message}")
         }
     }
 

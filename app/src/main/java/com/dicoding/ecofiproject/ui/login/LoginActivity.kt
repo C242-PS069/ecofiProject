@@ -9,8 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.ecofiproject.ViewModelFactory
 import com.dicoding.ecofiproject.databinding.ActivityLoginBinding
-import com.dicoding.ecofiproject.ui.databinding.ActivityLoginBinding
 import com.dicoding.ecofiproject.MainActivity
+import com.dicoding.ecofiproject.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -32,20 +32,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+        // Menangani klik tombol login
         binding.loginButton.setOnClickListener {
             showLoading(true)
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
 
-            loginViewModel.loginUser(email, password) { response ->
-                if (response.isSuccessful) {
-                    showLoading(false)
-                    val token = response.body()?.data?.token
+            loginViewModel.login(email, password) { isSuccess, message ->
+                showLoading(false)
+                if (isSuccess) {
+                    // Jika login berhasil, tampilkan dialog dan pindah ke MainActivity
                     AlertDialog.Builder(this).apply {
                         setTitle("Yeah!")
-                        setMessage("Login berhasil. Selamat belajar!")
+                        setMessage("Login berhasil. Selamat berkreasi!")
                         setPositiveButton("Lanjut") { _, _ ->
-                            val intent = Intent(context, MainActivity::class.java)
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                             finish()
@@ -53,21 +54,26 @@ class LoginActivity : AppCompatActivity() {
                         create()
                         show()
                     }
-                    Log.d("LoginActivity", "Login successful: ${response.body()?.message}")
+                    Log.d("LoginActivity", "Login successful: $message")
                 } else {
-                    showLoading(false)
+                    // Jika login gagal, tampilkan pesan error
                     AlertDialog.Builder(this).apply {
                         setTitle("Oops!")
-                        setMessage("Login gagal. Silakan coba lagi")
-                        setPositiveButton("OK") { dialog, _ ->
-                            dialog.dismiss()
-                        }
+                        setMessage("Login gagal. Silakan coba lagi. Pesan error: $message")
+                        setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
                         create()
                         show()
                     }
-                    Log.e("LoginActivity", "Login failed: ${response.errorBody()?.string()}")
+                    Log.e("LoginActivity", "Login failed: $message")
                 }
             }
+        }
+
+        // Menangani klik teks "Don’t have an account? Sign up"
+        binding.registerText.setOnClickListener {
+            // Pindah ke RegisterActivity
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 

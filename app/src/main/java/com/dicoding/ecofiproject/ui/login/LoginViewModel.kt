@@ -11,7 +11,6 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun saveSession(user: UserModel) {
         viewModelScope.launch {
-
             repository.saveSession(user)
             Log.d("UserRepository", "Saving session with token: ${user.token}")
         }
@@ -21,12 +20,18 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = repository.login(email, password)
-                val token = response.loginResult.token
-                if (!token.isNullOrEmpty()) {
-                    Log.d("LoginViewModel", "Login successful: Token=$token")
-                    callback(true, token)
+                if (response.isSuccessful) {
+                    val loginResponse = response.body()
+                    val token = loginResponse?.data?.token
+                    if (!token.isNullOrEmpty()) {
+                        Log.d("LoginViewModel", "Login successful: Token=$token")
+                        callback(true, token)
+                    } else {
+                        Log.e("LoginViewModel", "Login failed: Token is null or empty")
+                        callback(false, null)
+                    }
                 } else {
-                    Log.e("LoginViewModel", "Login failed: Token is null or empty")
+                    Log.e("LoginViewModel", "Login failed: ${response.errorBody()?.string()}")
                     callback(false, null)
                 }
             } catch (e: Exception) {

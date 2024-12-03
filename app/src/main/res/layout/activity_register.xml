@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:padding="16dp">
 
     <!-- Logo/Image -->
@@ -27,7 +26,6 @@
         android:text="Register"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/logoImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
