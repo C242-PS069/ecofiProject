@@ -1,37 +1,67 @@
 package com.dicoding.ecofiproject
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.dicoding.ecofiproject.data.UserRepository
+import com.dicoding.ecofiproject.data.pref.UserPreference
+import com.dicoding.ecofiproject.data.pref.dataStore
 import com.dicoding.ecofiproject.databinding.ActivityMainBinding
 import com.dicoding.ecofiproject.ui.home.HomeFragment
+import com.dicoding.ecofiproject.ui.login.LoginActivity
 import com.dicoding.ecofiproject.ui.profile.ProfileFragment
 import com.dicoding.ecofiproject.ui.scan.ScanFragment
+import kotlinx.coroutines.launch
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var userRepository: UserRepository
 
     private val SELECTED_ITEM_KEY = "selected_item"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inisialisasi SharedPreferences
+        // Inisialisasi SharedPreferences untuk tema
         sharedPreferences = getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
         // Setel tema berdasarkan preferensi yang tersimpan
         setThemeFromPreferences()
 
+        // Inisialisasi UserRepository untuk memeriksa status login
+        val userPreference = UserPreference.getInstance(applicationContext.dataStore)
+        userRepository = UserRepository.getInstance(userPreference)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Periksa apakah pengguna sudah login
+        lifecycleScope.launchWhenStarted {
+            userRepository.getSession().collect { user ->
+                // Cek status login setelah session diperoleh
+                if (user.isLogin) {
+                    // Pengguna sudah login, tampilkan HomeFragment
+                    if (savedInstanceState == null) {
+                        loadFragment(HomeFragment())
+                    }
+                } else {
+                    // Pengguna belum login, arahkan ke LoginActivity
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish()
+                }
+            }
+        }
+
         // Tampilkan fragment default saat aplikasi dibuka atau kembalikan fragment yang disimpan
         if (savedInstanceState == null) {
-            loadFragment(HomeFragment())
+            loadFragment(HomeFragment()) // Menampilkan HomeFragment jika sudah login
         } else {
             when (savedInstanceState.getInt(SELECTED_ITEM_KEY)) {
                 R.id.nav_home -> loadFragment(HomeFragment())

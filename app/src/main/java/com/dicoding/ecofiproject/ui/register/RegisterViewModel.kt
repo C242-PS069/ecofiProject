@@ -1,5 +1,6 @@
 package com.dicoding.ecofiproject.ui.register
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,14 +19,19 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
             _registerResult.value = Result.Loading
             try {
                 val result = userRepository.register(name, email, password)
+
                 if (result.isSuccessful) {
-                    _registerResult.value = Result.Success("Registration successful")
+                    _registerResult.value = Result.Success(data = "Registration successful")
+                    Log.d("Register", "Registration successful for $email")  // Menambahkan log sukses
                 } else {
                     _registerResult.value = Result.Error(result.message())
+                    Log.e("Register", "Registration failed: ${result.message()}")  // Menambahkan log error
                 }
             } catch (e: Exception) {
                 _registerResult.value = Result.Error(e.message ?: "Unknown error")
+                Log.e("Register", "Error during registration: ${e.message ?: "Unknown error"}")  // Menambahkan log untuk error exception
             }
+
         }
     }
 }

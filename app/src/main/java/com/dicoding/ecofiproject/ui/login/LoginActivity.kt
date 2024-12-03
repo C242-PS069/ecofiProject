@@ -74,6 +74,7 @@ class LoginActivity : AppCompatActivity() {
             // Pindah ke RegisterActivity
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
