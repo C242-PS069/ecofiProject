@@ -1,5 +1,6 @@
 package com.dicoding.ecofiproject.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,57 +13,66 @@ import com.dicoding.ecofiproject.databinding.ActivityLoginBinding
 import com.dicoding.ecofiproject.MainActivity
 import com.dicoding.ecofiproject.ui.register.RegisterActivity
 
-// LoginActivity untuk menangani tampilan dan logika login pengguna
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding // Binding untuk layout activity_login.xml
-    private val loginViewModel: LoginViewModel by viewModels { // Menggunakan ViewModel untuk login
-        ViewModelFactory.getInstance(this) // Menyediakan instance ViewModel menggunakan ViewModelFactory
+    private lateinit var binding: ActivityLoginBinding
+    private val loginViewModel: LoginViewModel by viewModels {
+        ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater) // Menginflate layout
-        setContentView(binding.root) // Menetapkan root layout sebagai tampilan activity
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setupView() // Menyiapkan tampilan
-        setupAction() // Menyiapkan aksi tombol dan klik
+        // Cek status login saat activity dibuat
+        checkLoginStatus()
+
+        setupView()
+        setupAction()
     }
 
-    // Fungsi untuk setup tampilan activity
+    private fun checkLoginStatus() {
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
+        if (isLoggedIn) {
+            // Jika pengguna sudah login, arahkan ke MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finish() // Tutup LoginActivity
+        }
+    }
+
     private fun setupView() {
-        supportActionBar?.hide() // Menyembunyikan ActionBar (untuk tampilan full screen)
+        supportActionBar?.hide()
     }
 
-    // Fungsi untuk menangani aksi klik tombol dan tautan
     private fun setupAction() {
-        // Menangani klik tombol login
         binding.loginButton.setOnClickListener {
-            showLoading(true) // Menampilkan loading indicator
-            val email = binding.edLoginEmail.text.toString() // Mengambil email dari input
-            val password = binding.edLoginPassword.text.toString() // Mengambil password dari input
+            showLoading(true)
+            val email = binding.edLoginEmail.text.toString()
+            val password = binding.edLoginPassword.text.toString()
 
-            // Memanggil fungsi login dari ViewModel dan memberikan callback untuk menangani hasil
             loginViewModel.login(email, password) { isSuccess, message ->
-                showLoading(false) // Menyembunyikan loading indicator setelah response diterima
+                showLoading(false)
                 if (isSuccess) {
-                    // Jika login berhasil, tampilkan dialog konfirmasi dan pindah ke MainActivity
+                    saveLoginStatus(true) // Simpan status login
+
                     AlertDialog.Builder(this).apply {
-                        setTitle("Yeah!") // Judul dialog
-                        setMessage("Login berhasil. Selamat berkreasi!") // Pesan dialog
+                        setTitle("Yeah!")
+                        setMessage("Login berhasil. Selamat berkreasi!")
                         setPositiveButton("Lanjut") { _, _ ->
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            // Mengatur flag untuk clear task dan membuka MainActivity
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent) // Menjalankan MainActivity
-                            finish() // Menutup LoginActivity
+                            startActivity(intent)
+                            finish()
                         }
                         create()
                         show()
                     }
-                    Log.d("LoginActivity", "Login successful: $message") // Menampilkan log sukses
+                    Log.d("LoginActivity", "Login successful: $message")
                 } else {
-                    // Ketika login gagal, tampilkan pesan error
                     AlertDialog.Builder(this).apply {
                         setTitle("Oops!")
                         setMessage("Login gagal. Silakan coba lagi. Pesan error: $message")
@@ -70,21 +80,24 @@ class LoginActivity : AppCompatActivity() {
                         create()
                         show()
                     }
-                    Log.e("LoginActivity", "Login failed: $message") // Menampilkan log error
+                    Log.e("LoginActivity", "Login failed: $message")
                 }
             }
         }
 
-        // Menangani klik teks "Don’t have an account? Sign up"
         binding.registerText.setOnClickListener {
-            // Pindah ke RegisterActivity
             val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent) // Menjalankan RegisterActivity
-            finish() // Menutup LoginActivity
+            startActivity(intent)
         }
     }
 
-    // Fungsi untuk menampilkan atau menyembunyikan loading indicator
+    private fun saveLoginStatus(isLoggedIn: Boolean) {
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("is_logged_in", isLoggedIn)
+        editor.apply()
+    }
+
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
     }

@@ -16,27 +16,27 @@
         android:theme="@style/Theme.EcofiProject"
         tools:targetApi="31">
 
-        <!-- Set LoginActivity as the launcher activity -->
-        <!-- LoginActivity sebagai launcher -->
+        <!-- Set MainActivity as the launcher activity -->
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.register.RegisterActivity"></activity>
-
-
-        <!-- Hapus intent-filter dari MainActivity atau ubah untuk menggunakan Default -->
+        <!-- Set LoginActivity as internal only -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.DEFAULT" />
-            </intent-filter>
+            android:name=".ui.login.LoginActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false">
+
         </activity>
 
     </application>

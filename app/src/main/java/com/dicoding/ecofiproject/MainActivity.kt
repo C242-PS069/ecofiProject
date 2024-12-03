@@ -42,24 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Periksa apakah pengguna sudah login
-        lifecycleScope.launchWhenStarted {
-            userRepository.getSession().collect { user ->
-                // Cek status login setelah session diperoleh
-                if (user.isLogin) {
-                    // Pengguna sudah login, tampilkan HomeFragment
-                    if (savedInstanceState == null) {
-                        loadFragment(HomeFragment())
-                    }
-                } else {
-                    // Pengguna belum login, arahkan ke LoginActivity
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    finish()
-                }
-            }
-        }
-
-        // Tampilkan fragment default saat aplikasi dibuka atau kembalikan fragment yang disimpan
+        // Menampilkan fragment default atau yang sebelumnya disimpan
         if (savedInstanceState == null) {
             loadFragment(HomeFragment()) // Menampilkan HomeFragment jika sudah login
         } else {
@@ -78,6 +61,22 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_scan -> loadFragment(ScanFragment())
                 R.id.nav_profile -> loadFragment(ProfileFragment())
                 else -> false
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        // Cek status login saat aktivitas dimulai
+        lifecycleScope.launchWhenStarted {
+            userRepository.getSession().collect { user ->
+                // Cek status login setelah session diperoleh
+                if (!user.isLogin) {
+                    // Pengguna belum login, arahkan ke LoginActivity
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish()  // Tutup MainActivity agar tidak bisa kembali ke sini
+                }
             }
         }
     }
@@ -113,3 +112,4 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(SELECTED_ITEM_KEY, binding.bottomNavigationView.selectedItemId)
     }
 }
+
