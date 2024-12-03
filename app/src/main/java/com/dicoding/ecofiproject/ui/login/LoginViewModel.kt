@@ -7,7 +7,6 @@ import com.dicoding.ecofiproject.data.UserRepository
 import com.dicoding.ecofiproject.data.pref.UserModel
 import kotlinx.coroutines.launch
 
-// ViewModel untuk login, yang mengelola data dan logika terkait login pengguna
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
     // Fungsi untuk menyimpan sesi pengguna ke preference
@@ -27,6 +26,13 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
                     val loginResponse = response.body()
                     val token = loginResponse?.data?.token
                     if (!token.isNullOrEmpty()) {
+                        val userModel = UserModel(
+                            name = loginResponse.data.name,
+                            email = email,
+                            token = token,
+                            isLogin = true
+                        )
+                        saveSession(userModel)  // Simpan sesi pengguna setelah login sukses
                         Log.d("LoginViewModel", "Login successful: Token=$token")
                         callback(true, token)
                     } else {
@@ -44,5 +50,4 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
             }
         }
     }
-
 }

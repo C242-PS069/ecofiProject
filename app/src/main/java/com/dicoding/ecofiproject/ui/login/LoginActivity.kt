@@ -96,6 +96,7 @@ class LoginActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putBoolean("is_logged_in", isLoggedIn)
         editor.apply()
+        Log.d("LoginActivity", "Login status saved: isLoggedIn=$isLoggedIn")
     }
 
     private fun showLoading(isLoading: Boolean) {

@@ -18,7 +18,6 @@ import com.dicoding.ecofiproject.ui.profile.ProfileFragment
 import com.dicoding.ecofiproject.ui.scan.ScanFragment
 import kotlinx.coroutines.launch
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -71,11 +70,12 @@ class MainActivity : AppCompatActivity() {
         // Cek status login saat aktivitas dimulai
         lifecycleScope.launchWhenStarted {
             userRepository.getSession().collect { user ->
-                // Cek status login setelah session diperoleh
                 if (!user.isLogin) {
-                    // Pengguna belum login, arahkan ke LoginActivity
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    finish()  // Tutup MainActivity agar tidak bisa kembali ke sini
+                    // Pengguna belum login, arahkan ke LoginActivity hanya jika belum berada di LoginActivity
+                    if (javaClass != LoginActivity::class.java) {
+                        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                        finish()  // Tutup MainActivity agar tidak bisa kembali ke sini
+                    }
                 }
             }
         }
@@ -88,7 +88,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    // Fungsi untuk menyetel tema berdasarkan preferensi yang tersimpan
     private fun setThemeFromPreferences() {
         val isDarkMode = sharedPreferences.getBoolean("dark_mode", false)
         if (isDarkMode) {
@@ -112,4 +111,3 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(SELECTED_ITEM_KEY, binding.bottomNavigationView.selectedItemId)
     }
 }
-
