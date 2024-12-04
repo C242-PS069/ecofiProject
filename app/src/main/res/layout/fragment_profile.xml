@@ -15,7 +15,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints">
 
-
         <!-- Tambahkan TextView untuk My Profile -->
         <TextView
             android:id="@+id/tv_my_profile"
@@ -135,6 +134,16 @@
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/primary"
                 android:text="@string/save_changes"
+                android:textColor="@android:color/white" />
+
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/logout"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </ScrollView>

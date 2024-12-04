@@ -45,5 +45,6 @@
     <string name="register">Register</string>
     <string name="Quote">A new day, a new goal. Make life exciting while helping the environment.</string>
     <string name="sign">Already have an account? Login</string>
+    <string name="logout">Logout\n</string>
 
 </resources>

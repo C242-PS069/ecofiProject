@@ -12,6 +12,7 @@ import com.dicoding.ecofiproject.ViewModelFactory
 import com.dicoding.ecofiproject.databinding.ActivityLoginBinding
 import com.dicoding.ecofiproject.MainActivity
 import com.dicoding.ecofiproject.ui.register.RegisterActivity
+import android.content.SharedPreferences
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,31 +21,21 @@ class LoginActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Cek status login saat activity dibuat
-        checkLoginStatus()
+        // Inisialisasi SharedPreferences untuk menyimpan status login
+        sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
         setupView()
         setupAction()
     }
 
-    private fun checkLoginStatus() {
-        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
-        if (isLoggedIn) {
-            // Jika pengguna sudah login, arahkan ke MainActivity
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-            finish() // Tutup LoginActivity
-        }
-    }
-
-    private fun setupView() {
+    private fun setupView() { 
         supportActionBar?.hide()
     }
 
@@ -54,10 +45,20 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
 
+            // Cek jika email dan password kosong
+            if (email.isEmpty() || password.isEmpty()) {
+                showLoading(false)
+                showErrorDialog("Email dan password tidak boleh kosong!")
+                return@setOnClickListener
+            }
+
+            // Panggil fungsi login dari ViewModel
             loginViewModel.login(email, password) { isSuccess, message ->
                 showLoading(false)
+
                 if (isSuccess) {
-                    saveLoginStatus(true) // Simpan status login
+                    // Simpan status login di SharedPreferences
+                    saveLoginStatus(true)
 
                     AlertDialog.Builder(this).apply {
                         setTitle("Yeah!")
@@ -73,13 +74,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     Log.d("LoginActivity", "Login successful: $message")
                 } else {
-                    AlertDialog.Builder(this).apply {
-                        setTitle("Oops!")
-                        setMessage("Login gagal. Silakan coba lagi. Pesan error: $message")
-                        setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
-                        create()
-                        show()
-                    }
+                    showErrorDialog("Login gagal. Pesan error: $message")
                     Log.e("LoginActivity", "Login failed: $message")
                 }
             }
@@ -88,18 +83,30 @@ class LoginActivity : AppCompatActivity() {
         binding.registerText.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
-    }
-
-    private fun saveLoginStatus(isLoggedIn: Boolean) {
-        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("is_logged_in", isLoggedIn)
-        editor.apply()
-        Log.d("LoginActivity", "Login status saved: isLoggedIn=$isLoggedIn")
     }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    // Fungsi untuk menampilkan dialog error
+    private fun showErrorDialog(message: String) {
+        AlertDialog.Builder(this).apply {
+            setTitle("Oops!")
+            setMessage(message)
+            setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            create()
+            show()
+        }
+    }
+
+    // Fungsi untuk menyimpan status login di SharedPreferences
+    private fun saveLoginStatus(isLoggedIn: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("is_logged_in", isLoggedIn)
+        editor.apply()
+        Log.d("LoginActivity", "Login status saved: isLoggedIn=$isLoggedIn")
     }
 }
