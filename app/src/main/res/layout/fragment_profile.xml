@@ -133,8 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/primary"
-                android:text="@string/save_changes"
-                android:textColor="@android:color/white" />
+                android:text="@string/save_changes" />
 
             <!-- Logout Button -->
             <Button
@@ -143,8 +142,7 @@
                 android:layout_height="45dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/primary"
-                android:text="@string/logout"
-                android:textColor="@android:color/white" />
+                android:text="@string/logout"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

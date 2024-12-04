@@ -26,6 +26,10 @@ retrofit = "2.9.0"
 datastoreCoreAndroid = "1.1.1"
 datastorePreferencesCoreJvm = "1.1.1"
 mediationTestSuite = "3.0.0"
+cameraCore = "1.4.0"
+cameraView = "1.4.0"
+cameraLifecycle = "1.4.0"
+cardview = "1.0.0"
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -55,6 +59,10 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 androidx-datastore-core-android = { group = "androidx.datastore", name = "datastore-core-android", version.ref = "datastoreCoreAndroid" }
 androidx-datastore-preferences-core-jvm = { group = "androidx.datastore", name = "datastore-preferences-core-jvm", version.ref = "datastorePreferencesCoreJvm" }
 mediation-test-suite = { group = "com.google.android.ads", name = "mediation-test-suite", version.ref = "mediationTestSuite" }
+androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
+androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
+androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
