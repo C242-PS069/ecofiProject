@@ -60,6 +60,12 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        // Listener untuk tombol Edit Profile
+        binding.btnEditProfile.setOnClickListener {
+            val intent = Intent(requireContext(), EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         // Tambahkan listener untuk tombol logout
         binding.btnLogout.setOnClickListener {
             logout()

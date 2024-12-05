@@ -2,65 +2,81 @@ package com.dicoding.ecofiproject.data
 
 import android.util.Log
 import com.dicoding.ecofiproject.data.api.ApiConfig
-import com.dicoding.ecofiproject.data.response.LoginResponse
-import com.dicoding.ecofiproject.data.response.RegisterResponse
+import com.dicoding.ecofiproject.data.response.*
 import com.dicoding.ecofiproject.data.pref.UserModel
 import com.dicoding.ecofiproject.data.pref.UserPreference
 import retrofit2.Response
 
-// Kelas UserRepository untuk menangani operasi terkait pengguna seperti login, registrasi, dan sesi
 class UserRepository private constructor(
     private val userPreference: UserPreference
 ) {
 
-    // Fungsi login, mengembalikan Response<LoginResponse>
     suspend fun login(email: String, password: String): Response<LoginResponse> {
         return try {
-            // Mengirim permintaan login ke API menggunakan ApiService
             val response = ApiConfig.getApiService().login(email, password)
-            Log.d("UserRepository", "Login response: $response") // Menampilkan log respons login
+            Log.d("UserRepository", "Login response: $response")
             response
         } catch (e: Exception) {
-            // Menangani exception jika permintaan gagal
             throw Exception("Network request failed: ${e.message}")
         }
     }
 
-    // Fungsi register, mengembalikan Response<RegisterResponse>
     suspend fun register(name: String, email: String, password: String): Response<RegisterResponse> {
         return try {
-            // Mengirim permintaan registrasi ke API menggunakan ApiService
             val response = ApiConfig.getApiService().register(name, email, password)
-            Log.d("UserRepository", "Register response: $response") // Menampilkan log respons registrasi
+            Log.d("UserRepository", "Register response: $response")
             response
         } catch (e: Exception) {
-            // Menangani exception jika permintaan gagal
             throw Exception("Network request failed: ${e.message}")
         }
     }
 
-    // Fungsi untuk menyimpan sesi pengguna ke preference
     suspend fun saveSession(user: UserModel) {
-        userPreference.saveSession(user) // Memanggil fungsi saveSession() dari UserPreference untuk menyimpan data pengguna
+        userPreference.saveSession(user)
     }
 
-    // Fungsi untuk mengambil sesi pengguna dari preference
-    fun getSession() = userPreference.getSession() // Mengambil data sesi pengguna dengan memanggil getSession() dari UserPreference
+    fun getSession() = userPreference.getSession()
 
-    // Fungsi untuk logout, menghapus sesi dari preference
     suspend fun logout() {
-        userPreference.logout() // Menghapus sesi pengguna dengan memanggil logout() dari UserPreference
+        userPreference.logout()
     }
 
-    // Singleton pattern untuk mendapatkan instance UserRepository
+    // Fungsi baru untuk reset password
+    suspend fun resetPassword(email: String): Response<ResetPasswordResponse> {
+        return try {
+            val requestBody = mapOf("email" to email)
+            val response = ApiConfig.getApiService().resetPassword(requestBody)
+            Log.d("UserRepository", "Reset password response: $response")
+            response
+        } catch (e: Exception) {
+            throw Exception("Network request failed: ${e.message}")
+        }
+    }
+
+    // Fungsi baru untuk edit profile
+    suspend fun editProfile(
+        newUsername: String?,
+        oldPassword: String?,
+        newPassword: String?,
+        email: String
+    ): Response<EditProfileResponse> {
+        return try {
+            val request = EditProfileRequest(newUsername, oldPassword, newPassword, email)
+            val response = ApiConfig.getApiService().editProfile(request)
+            Log.d("UserRepository", "Edit profile response: $response")
+            response
+        } catch (e: Exception) {
+            throw Exception("Network request failed: ${e.message}")
+        }
+    }
+
     companion object {
         @Volatile
         private var instance: UserRepository? = null
 
-        // Fungsi untuk mendapatkan instance tunggal dari UserRepository
         fun getInstance(userPreference: UserPreference): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(userPreference) // Membuat instance jika belum ada
-            }.also { instance = it } // Menyimpan instance setelah dibuat
+                instance ?: UserRepository(userPreference)
+            }.also { instance = it }
     }
 }
