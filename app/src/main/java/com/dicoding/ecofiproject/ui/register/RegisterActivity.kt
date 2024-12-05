@@ -1,16 +1,17 @@
 package com.dicoding.ecofiproject.ui.register
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.dicoding.ecofiproject.ViewModelFactory
 import com.dicoding.ecofiproject.databinding.ActivityRegisterBinding
 import com.dicoding.ecofiproject.ui.login.LoginActivity
-import androidx.appcompat.app.AlertDialog
-import android.content.Intent
-import android.widget.Toast
 import com.dicoding.ecofiproject.utils.Result
 
 class RegisterActivity : AppCompatActivity() {
@@ -61,6 +62,14 @@ class RegisterActivity : AppCompatActivity() {
                 is Result.Success -> {
                     // Menyembunyikan loading dan menampilkan pesan sukses
                     showLoading(false)
+
+                    // Simpan data user ke SharedPreferences
+                    val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("username", binding.nameInput.text.toString())
+                    editor.putString("email", binding.emailInput.text.toString())
+                    editor.apply()
+
                     AlertDialog.Builder(this).apply {
                         setTitle("Selamat!")
                         setMessage(result.data) // Menampilkan pesan sukses dari result
@@ -102,14 +111,12 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
-
         // Menangani klik "Already have an account?"
         binding.loginText.setOnClickListener {
             // Pindah ke LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-
         }
     }
 

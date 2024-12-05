@@ -49,5 +49,18 @@
     <string name="old_password">Old Password\n</string>
     <string name="new_password">New Password\n</string>
     <string name="save_profile">"Save "</string>
+    <string name="username">Username</string>
+    <string name="nmemail">Email</string>
+    <string name="coming_soon">Coming soon Pro App\n</string>
+    <string name="language">Switch To Indonesia Language\n</string>
+    <string name="signup">Don’t have an account? Sign up</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password">Password</string>
+    <string name="quotes">Today is a fresh start. Make a difference by recycling your waste wisely.</string>
+    <string name="welcome">Welcome</string>
+    <string name="name_register">Name</string>
+    <string name="password_rgs">Password</string>
+    <string name="quotes2">“Your Camera, Your Vision”</string>
+    <string name="create">Create</string>
 
 </resources>

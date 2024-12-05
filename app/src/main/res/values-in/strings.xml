@@ -1,0 +1,66 @@
+<resources>
+    <!-- General Strings -->
+    <string name="app_name">Ecofy</string>
+    <string name="save_changes">Simpan perubahan</string>
+    <string name="edit_profile">Edit Profil</string>
+
+    <!-- Home Section -->
+    <string name="article_cover">Sampul Artikel</string>
+    <string name="article_title">Judul Artikel</string>
+    <string name="article_cover_description">Gambar yang mewakili sampul artikel</string>
+    <string name="article_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="read_more">Baca Selengkapnya</string>
+    <string name="read_more_description">Ketuk untuk membaca artikel lengkap</string>
+    <string name="card_description">Kartu yang dapat diklik dengan detail artikel</string>
+
+    <!-- Profile Section -->
+    <string name="profile_picture">Foto Profil</string>
+    <string name="edit_picture">Edit Foto</string>
+    <string name="profile_settings">Profil Saya</string>
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="theme">Berpindah ke mode gelap</string>
+
+    <!-- Messages -->
+    <string name="changes_saved">Perubahan Anda telah disimpan dengan sukses.</string>
+    <string name="invalid_email">Harap masukkan alamat email yang valid.</string>
+    <string name="empty_name">Nama tidak boleh kosong.</string>
+    <string name="saving_changes">Menyimpan perubahan...</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Beranda</string>
+    <string name="nav_scan">Pindai</string>
+    <string name="nav_profile">Profil</string>
+
+    <!-- Material Icon -->
+    <string name="material_icon">Ikon Material</string>
+
+    <!-- Back Icon -->
+    <string name="back_icon">Ikon Kembali</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="upload">Unggah</string>
+    <string name="my_profile">Profil saya</string>
+    <string name="my_scan">Pindai</string>
+    <string name="register">Daftar</string>
+    <string name="Quote">Hari baru, tujuan baru. Jadikan hidup menarik sambil membantu lingkungan.</string>
+    <string name="sign">Sudah memiliki akun? Masuk</string>
+    <string name="logout">Keluar\n</string>
+    <string name="old_password">Kata Sandi Lama\n</string>
+    <string name="new_password">Kata Sandi Baru\n</string>
+    <string name="save_profile">"Simpan "</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="nmemail">Email</string>
+    <string name="coming_soon">Akan datang Pro App\n</string>
+    <string name="language">Pindah ke Bahasa Indonesia\n</string>
+    <string name="signup">Belum punya akun? Daftar</string>
+    <string name="forgot_password">Lupa Kata Sandi?</string>
+    <string name="password">Kata Sandi</string>
+    <string name="quotes">Hari ini adalah awal yang baru. Buat perbedaan dengan mendaur ulang sampah Anda dengan bijak.</string>
+    <string name="welcome">Selamat datang</string>
+    <string name="name_register">Nama</string>
+    <string name="password_rgs">Kata Sandi</string>
+    <string name="quotes2">“Kamera Anda, Visi Anda”</string>
+    <string name="create">Buat</string>
+
+</resources>

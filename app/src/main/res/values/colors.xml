@@ -10,6 +10,12 @@
     <color name="primary_dark">#468BCD</color> <!-- Warna utama yang lebih gelap -->
     <color name="primary_light">#C8E6C9</color> <!-- Warna utama yang lebih terang -->
 
+        <!-- Warna utama -->
+    <color name="colorPrimary">#6200EE</color> <!-- Ganti dengan warna yang diinginkan -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- Ganti dengan warna yang diinginkan -->
+    <color name="colorAccent">#03DAC5</color> <!-- Ganti dengan warna yang diinginkan -->
+
+
     <!-- Secondary Colors -->
     <color name="secondary">#76E2C6</color> <!-- Warna pendukung (contoh biru) -->
     <color name="secondary_dark">#36C0CC</color>
