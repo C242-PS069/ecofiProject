@@ -1,6 +1,6 @@
 <resources>
     <!-- General Strings -->
-    <string name="app_name">ecofiProject</string>
+    <string name="app_name">Ecofy</string>
     <string name="save_changes">Save changes</string>
     <string name="edit_profile">Edit Profile</string>
 
@@ -45,5 +45,9 @@
     <string name="register">Register</string>
     <string name="Quote">A new day, a new goal. Make life exciting while helping the environment.</string>
     <string name="sign">Already have an account? Login</string>
+    <string name="logout">Logout\n</string>
+    <string name="old_password">Old Password\n</string>
+    <string name="new_password">New Password\n</string>
+    <string name="save_profile">"Save "</string>
 
 </resources>

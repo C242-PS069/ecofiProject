@@ -16,7 +16,6 @@ import com.dicoding.ecofiproject.ui.home.HomeFragment
 import com.dicoding.ecofiproject.ui.login.LoginActivity
 import com.dicoding.ecofiproject.ui.profile.ProfileFragment
 import com.dicoding.ecofiproject.ui.scan.ScanFragment
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 

@@ -15,7 +15,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints">
 
-
         <!-- Tambahkan TextView untuk My Profile -->
         <TextView
             android:id="@+id/tv_my_profile"
@@ -127,15 +126,23 @@
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
-            <!-- Save Button -->
+            <!-- Edit Profile Button -->
             <Button
-                android:id="@+id/btn_save"
+                android:id="@+id/btnEditProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/primary"
-                android:text="@string/save_changes"
-                android:textColor="@android:color/white" />
+                android:text="@string/edit_profile" />
+
+            <!-- Logout Button -->
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/logout"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
