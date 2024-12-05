@@ -1,6 +1,6 @@
 <resources>
     <!-- General Strings -->
-    <string name="app_name">ecofiProject</string>
+    <string name="app_name">Ecofy</string>
     <string name="save_changes">Save changes</string>
     <string name="edit_profile">Edit Profile</string>
 
