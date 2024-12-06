@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/bg_view"
-         />
-
+        android:background="@drawable/bg_view" />
 
     <LinearLayout
+        android:id="@+id/input_container"
         android:layout_width="400dp"
         android:layout_height="80dp"
         android:layout_marginLeft="80dp"
@@ -24,41 +23,38 @@
         android:background="@drawable/rounded_background_input1"
         android:orientation="vertical">
 
-
         <ImageView
+            android:id="@+id/icon_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_launcher_background"></ImageView>
+            android:src="@drawable/ic_launcher_background" />
 
         <TextView
+            android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="3dp"
             android:text="Kreasikan"
             android:textSize="10sp"
-            android:textStyle="bold">
-
-        </TextView>
-
+            android:textStyle="bold" />
     </LinearLayout>
 
-
-
     <LinearLayout
+        android:id="@+id/text_and_image_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="65dp"
-        android:layout_height="31dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="65dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/textView"
@@ -73,6 +69,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/main_content"
         android:layout_marginTop="180dp"
         android:layout_width="match_parent"
         android:layout_height="564dp"
@@ -82,8 +79,6 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="0"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
@@ -92,14 +87,17 @@
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/horizontal_recycler_view"
+            android:id="@+id/rv_articles"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="horizontal" />
+            android:layout_height="200dp"
+            android:scrollbars="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        />
 
         <LinearLayout
+            android:id="@+id/information_section"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="210dp"
             android:layout_marginTop="10dp"
             android:background="@color/light_gray"
             android:orientation="vertical">
@@ -108,8 +106,6 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_row="1"
-                android:layout_column="0"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -118,20 +114,16 @@
                 android:textStyle="bold" />
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
+                android:id="@+id/view_page_banner"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                 />
+                android:layout_height="140dp" />
 
-                <me.relex.circleindicator.CircleIndicator
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"/>
-
-
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/circle_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" />
         </LinearLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

@@ -1,5 +1,8 @@
 package com.dicoding.ecofiproject.data.api
 
+import com.dicoding.ecofiproject.data.response.ArticleDetailResponse
+import com.dicoding.ecofiproject.data.response.ArticlesResponse
+import com.dicoding.ecofiproject.data.response.BannersResponse
 import com.dicoding.ecofiproject.data.response.EditProfileRequest
 import com.dicoding.ecofiproject.data.response.EditProfileResponse
 import com.dicoding.ecofiproject.data.response.RegisterResponse
@@ -11,7 +14,9 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -41,5 +46,20 @@ interface ApiService {
     suspend fun editProfile(
         @Body editProfileRequest: EditProfileRequest
     ): Response<EditProfileResponse>
+
+    // Get all articles
+    @GET("/api/articles")
+    suspend fun getAllArticles(): Response<ArticlesResponse>
+
+    // Get article by ID
+    @GET("/api/articles/{id}")
+    suspend fun getArticleById(
+        @Path("id") id: Int
+    ): Response<ArticleDetailResponse>
+
+    // Get all banners
+    @GET("/api/banners")
+    suspend fun getAllBanners(): Response<BannersResponse>
 }
+
 
