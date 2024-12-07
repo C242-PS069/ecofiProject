@@ -2,9 +2,12 @@ package com.dicoding.ecofiproject.data
 
 import android.util.Log
 import com.dicoding.ecofiproject.data.api.ApiConfig
-import com.dicoding.ecofiproject.data.response.*
 import com.dicoding.ecofiproject.data.pref.UserModel
 import com.dicoding.ecofiproject.data.pref.UserPreference
+import com.dicoding.ecofiproject.data.response.*
+import okhttp3.MultipartBody
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class UserRepository private constructor(
@@ -68,6 +71,16 @@ class UserRepository private constructor(
         } catch (e: Exception) {
             throw Exception("Network request failed: ${e.message}")
         }
+    }
+
+    // Fungsi baru untuk prediksi gambar
+    fun predictImage(image: MultipartBody.Part): Call<PredictResponse> {
+        return ApiConfig.getApiService().predictImage(image)
+    }
+
+    // Fungsi baru untuk mendapatkan detail prediksi
+    fun getRecycleDetails(id: Int): Call<RecycleDetailsResponse> {
+        return ApiConfig.getApiService().getRecycleDetails(id)
     }
 
     companion object {
