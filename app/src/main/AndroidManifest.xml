@@ -56,6 +56,15 @@
             android:exported="false">
         </activity>
 
+        <activity android:name=".ui.recommend.RecommendActivity"
+            android:exported="false">
+            <!-- Atau konfigurasi lainnya jika diperlukan -->
+        </activity>
+
+        <activity android:name=".ui.recommend.RecommendDetailActivity" >
+        </activity>
+
+
     </application>
 
 </manifest>

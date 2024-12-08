@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.scan.ScanFragment">
 
-    <!-- AppBar untuk Header -->
+    <!-- Header AppBar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="69dp"
         android:background="@drawable/rounded_bottom"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Tambahkan TextView untuk My Profile -->
         <TextView
             android:id="@+id/tv_my_profile"
             android:layout_width="match_parent"
@@ -28,94 +29,61 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp" />
     </com.google.android.material.appbar.AppBarLayout>
-    <!-- Logo di atas ImageView -->
 
-    <!-- ImageView untuk menampilkan gambar placeholder -->
+    <!-- ImageView untuk menampilkan gambar -->
     <ImageView
-        android:id="@+id/previewImageView"
-        android:layout_width="0dp"
-        android:layout_height="350dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_place_holder" />
 
-    <!-- Quote Text di bawah gambar -->
-    <TextView
-        android:id="@+id/quoteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/quotes2"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/previewImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Tombol Kreasikan di atas tombol Camera dan Gallery -->
+    <!-- Tombol Kreasikan -->
     <Button
         android:id="@+id/buttonKreasikan"
-        android:layout_width="270dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
-        android:text="@string/create"
+        android:layout_marginTop="16dp"
+        android:text="Buat"
+        android:textColor="@android:color/white"
         android:textSize="16sp"
         android:backgroundTint="#329EAA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tombol Gallery di kiri -->
+    <!-- Tombol Galeri -->
     <Button
         android:id="@+id/buttonGallery"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:text="Gallery"
-        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
         android:backgroundTint="#329EAA"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonKreasikan"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Tombol Scan di kanan -->
+    <!-- Tombol Scan -->
     <Button
         android:id="@+id/buttonScan"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="90dp"
-        android:text="Scan"
-        android:textSize="16sp"
-        android:backgroundTint="#329DA9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Divider Penghias -->
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/buttonGallery"
-        app:layout_constraintBottom_toTopOf="@id/buttonScan"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Scan"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:backgroundTint="#329DA9"
+        app:layout_constraintTop_toBottomOf="@id/buttonKreasikan"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- ImageView untuk menampilkan gambar yang diambil atau dipilih -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_margin="16dp"
-        android:scaleType="centerCrop"
-        android:visibility="gone" /> <!-- Gambar tidak ditampilkan awalnya -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

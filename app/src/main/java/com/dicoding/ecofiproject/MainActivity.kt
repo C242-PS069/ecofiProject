@@ -1,6 +1,5 @@
 package com.dicoding.ecofiproject
 
-import ScanFragment
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -16,6 +15,7 @@ import com.dicoding.ecofiproject.databinding.ActivityMainBinding
 import com.dicoding.ecofiproject.ui.home.HomeFragment
 import com.dicoding.ecofiproject.ui.login.LoginActivity
 import com.dicoding.ecofiproject.ui.profile.ProfileFragment
+import com.dicoding.ecofiproject.ui.scan.ScanFragment
 
 class MainActivity : AppCompatActivity() {
 
