@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation (libs.material.v180)
     testImplementation (libs.junit)
+    implementation ("com.squareup.okhttp3:okhttp:4.11.0")
     androidTestImplementation (libs.androidx.junit.v115)
     androidTestImplementation (libs.androidx.espresso.core.v351)
 }

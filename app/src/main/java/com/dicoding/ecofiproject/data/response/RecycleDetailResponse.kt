@@ -4,25 +4,25 @@ package com.dicoding.ecofiproject.data.response
 data class RecycleDetailsResponse(
     val status: String,
     val message: String,
-    val data: RecycleDetailsData
+    val data: RecycleDetails
 )
 
-data class RecycleDetailsData(
+data class RecycleDetails(
     val id: Int,
     val description: String,
-    val makes: Makes,
+    val makes: StepDetails,
     val title: String,
     val materials: List<String>,
-    val tools: Tools,
+    val tools: ToolsDetails,
     val video: String
 )
 
-data class Makes(
-    val step: List<String>,
-    val title: String
+data class StepDetails(
+    val title: String,
+    val step: List<String>
 )
 
-data class Tools(
-    val `materials-tools`: List<String>,
-    val title: String
+data class ToolsDetails(
+    val title: String,
+    val materialsTools: List<String>
 )

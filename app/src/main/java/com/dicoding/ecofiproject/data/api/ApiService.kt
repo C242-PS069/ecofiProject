@@ -7,7 +7,7 @@ import com.dicoding.ecofiproject.data.response.EditProfileRequest
 import com.dicoding.ecofiproject.data.response.EditProfileResponse
 import com.dicoding.ecofiproject.data.response.RegisterResponse
 import com.dicoding.ecofiproject.data.response.LoginResponse
-import com.dicoding.ecofiproject.data.response.PredictResponse
+import com.dicoding.ecofiproject.data.response.PredictionResponse
 import com.dicoding.ecofiproject.data.response.RecycleDetailsResponse
 import com.dicoding.ecofiproject.data.response.ResetPasswordResponse
 import okhttp3.MultipartBody
@@ -18,6 +18,7 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -69,8 +70,9 @@ interface ApiService {
     @Multipart
     @POST("/predict")
     fun predictImage(
-        @Part image: MultipartBody.Part
-    ): Call<PredictResponse>
+        @Header("Authorization") token: String, // Menambahkan header Authorization
+        @Part image: MultipartBody.Part // Gambar yang akan diprediksi
+    ): Call<PredictionResponse>
 
     @GET("/api/recycles/{id}")
     fun getRecycleDetails(

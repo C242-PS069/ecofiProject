@@ -5,6 +5,7 @@ import com.dicoding.ecofiproject.data.api.ApiConfig
 import com.dicoding.ecofiproject.data.pref.UserModel
 import com.dicoding.ecofiproject.data.pref.UserPreference
 import com.dicoding.ecofiproject.data.response.*
+import kotlinx.coroutines.flow.map
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -73,10 +74,19 @@ class UserRepository private constructor(
         }
     }
 
-    // Fungsi baru untuk prediksi gambar
-    fun predictImage(image: MultipartBody.Part): Call<PredictResponse> {
-        return ApiConfig.getApiService().predictImage(image)
+    fun predictImage(image: MultipartBody.Part): Call<PredictionResponse> {
+        // Ambil token dari session pengguna yang sudah login
+        val token = userPreference.getSession().map { it.token }.toString()
+
+        // Pastikan token valid
+        if (token.isNotEmpty()) {
+            // Panggil API dengan menambahkan token ke header Authorization
+            return ApiConfig.getApiService().predictImage("Bearer $token", image)
+        } else {
+            throw Exception("User is not authenticated")
+        }
     }
+
 
     // Fungsi baru untuk mendapatkan detail prediksi
     fun getRecycleDetails(id: Int): Call<RecycleDetailsResponse> {

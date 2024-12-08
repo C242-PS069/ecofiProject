@@ -10,32 +10,40 @@ object ApiConfig {
 
     private const val BASE_URL = "https://ecofy-373030918770.asia-southeast2.run.app"
 
+    // Fungsi untuk mendapatkan ApiService dengan token optional
     fun getApiService(token: String? = null): ApiService {
+        // Logging interceptor untuk melihat request dan response
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
+        // Builder OkHttpClient untuk menambahkan interceptor
         val clientBuilder = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+            .addInterceptor(loggingInterceptor) // Menambahkan logging
 
-        // Add authorization header if token is provided
-        if (token != null) {
+        // Jika token diberikan, kita tambahkan interceptor untuk Authorization header
+        token?.let {
             val authInterceptor = Interceptor { chain ->
-                val req = chain.request()
-                val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "Bearer $token")
+                val request = chain.request()
+                // Menambahkan header Authorization dengan token Bearer
+                val newRequest = request.newBuilder()
+                    .addHeader("Authorization", "Bearer $it")
+                    .addHeader("Content-Type", "application/json") // Tambahkan Content-Type jika diperlukan
                     .build()
-                chain.proceed(requestHeaders)
+                chain.proceed(newRequest)
             }
-            clientBuilder.addInterceptor(authInterceptor)
+            clientBuilder.addInterceptor(authInterceptor) // Menambahkan auth interceptor
         }
 
+        // Membangun OkHttpClient dengan interceptor
         val client = clientBuilder.build()
 
+        // Membangun Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
+            .baseUrl(BASE_URL) // URL dasar API
+            .addConverterFactory(GsonConverterFactory.create()) // Converter Gson untuk deserialisasi JSON
+            .client(client) // Menambahkan OkHttpClient yang telah dikonfigurasi
             .build()
 
+        // Mengembalikan instance ApiService
         return retrofit.create(ApiService::class.java)
     }
 }
