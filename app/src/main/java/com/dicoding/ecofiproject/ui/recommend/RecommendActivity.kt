@@ -1,35 +1,25 @@
 package com.dicoding.ecofiproject.ui.recommend
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ecofiproject.R
-import com.dicoding.ecofiproject.databinding.ActivityRecommendBinding
 
 class RecommendActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRecommendBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRecommendBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_recommend) // Pastikan ini dipanggil sebelum findViewById
 
-        // Logika untuk kembali
-        binding.backIcon.setOnClickListener {
-            onBackPressed()  // Kembali ke aktivitas sebelumnya
-        }
+        // Ambil data dari Intent
+        val material = intent.getStringExtra("MATERIAL") ?: "Tidak diketahui"
+        val confidence = intent.getStringExtra("CONFIDENCE") ?: "Tidak diketahui"
+        val title = intent.getStringExtra("TITLE") ?: "Tidak diketahui"
+        val description = intent.getStringExtra("DESCRIPTION") ?: "Tidak tersedia"
 
-        // Data untuk rekomendasi
-        val recommendationItems = listOf(
-            RecommendItem("Tempat Pensil", "Penasaran bagaimana caranya? Ayo sini"),
-            RecommendItem("Tempat Botol", "Bahan sederhana dengan hasil maksimal"),
-            RecommendItem("Tempat Sampah", "Mudah dibuat dan ramah lingkungan")
-        )
-
-        // Setup RecyclerView
-        val adapter = RecommendAdapter(recommendationItems)
-        binding.recommendationList.layoutManager = LinearLayoutManager(this)
-        binding.recommendationList.adapter = adapter
+        // Tampilkan data ke dalam layout
+        findViewById<TextView>(R.id.material_output).text = material
+        findViewById<TextView>(R.id.material_accuracy).text = "Akurasi: $confidence"
+        findViewById<TextView>(R.id.header_title).text = title
     }
 }
