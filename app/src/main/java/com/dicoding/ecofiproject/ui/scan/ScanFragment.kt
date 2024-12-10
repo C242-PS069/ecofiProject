@@ -115,7 +115,7 @@ class ScanFragment : Fragment() {
         }
     }
 
-    private fun submitImage(token: String) {
+    private suspend fun submitImage(token: String) {
         imageFile?.let { file ->
             // Buat RequestBody dari file gambar
             val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
@@ -132,18 +132,28 @@ class ScanFragment : Fragment() {
                     response: retrofit2.Response<com.dicoding.ecofiproject.data.response.PredictionResponse>
                 ) {
                     if (response.isSuccessful) {
-                        val predict = response.body()?.predict
-                        if (predict != null) {
-                            val intent =
-                                Intent(requireContext(), RecommendActivity::class.java).apply {
-                                    putExtra("MATERIAL", predict.label)
-                                    putExtra("CONFIDENCE", predict.confident)
-                                    putExtra("TITLE", predict.title ?: "Unknown Title")
-                                    putExtra("DESCRIPTION", predict.description ?: "No Description")
+                        val responseBody = response.body()
+
+                        // Pastikan respons tidak null
+                        responseBody?.let {
+                            val predict = it.predict
+                            val dataItem = it.data?.firstOrNull()
+
+                            // Mengecek apakah prediksi tersedia dan valid
+                            // Mengecek apakah prediksi tersedia dan valid
+                            if (predict != null) {
+                                val intent = Intent(requireContext(), RecommendActivity::class.java).apply {
+                                    putExtra("MATERIAL", predict.label)  // Label material yang diprediksi
+                                    putExtra("CONFIDENCE", predict.confident)  // Confidence level prediksi
+                                    putExtra("TITLE", dataItem?.title ?: "Unknown Title")  // Judul produk
+                                    putExtra("DESCRIPTION", dataItem?.description ?: "No Description")  // Deskripsi produk
+                                    putExtra("IMAGE_URL", dataItem?.image ?: "")  // URL gambar produk
                                 }
-                            startActivity(intent)
-                        } else {
-                            Toast.makeText(context, "Prediction failed", Toast.LENGTH_SHORT).show()
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(context, "Prediction failed", Toast.LENGTH_SHORT).show()
+                            }
+
                         }
                     } else {
                         Log.e("DEBUG_API", "Error: ${response.errorBody()?.string()}")

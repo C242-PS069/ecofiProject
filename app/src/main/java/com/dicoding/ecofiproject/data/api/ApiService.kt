@@ -3,6 +3,8 @@ package com.dicoding.ecofiproject.data.api
 import com.dicoding.ecofiproject.data.response.*
 import okhttp3.MultipartBody
 import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -48,7 +50,11 @@ interface ApiService {
         @Part image: MultipartBody.Part
     ): Call<PredictionResponse>
 
-
-    @GET("/api/recycles/{id}")
-    fun getRecycleDetails(@Path("id") id: Int): Call<RecycleDetailsResponse>
+    @GET("api/recycles/{id}")
+    fun getRecycleById(
+        @Path("id") id: Int
+    ): Call<RecycleDetailsResponse>
 }
+
+
+//Test

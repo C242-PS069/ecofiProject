@@ -90,7 +90,7 @@ class UserRepository private constructor(
 
     // Fungsi baru untuk mendapatkan detail prediksi
     fun getRecycleDetails(id: Int): Call<RecycleDetailsResponse> {
-        return ApiConfig.getApiService().getRecycleDetails(id)
+        return ApiConfig.getApiService().getRecycleById(id)
     }
 
     companion object {

@@ -10,6 +10,7 @@ import com.dicoding.ecofiproject.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(private val userRepository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
     // Konstruktor privat untuk menghindari pembuatan instance sembarangan.
+
     // Menyimpan UserRepository untuk di-passing ke ViewModel.
 
     @Suppress("UNCHECKED_CAST") // Menonaktifkan peringatan casting yang tidak aman.
@@ -43,3 +44,4 @@ class ViewModelFactory private constructor(private val userRepository: UserRepos
             }
     }
 }
+

@@ -7,12 +7,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    private const val BASE_URL = "https://ecofy-373030918770.asia-southeast2.run.app"
+    private const val BASE_URL = "https://ecofy-373030918770.asia-southeast2.run.app/"
 
     fun getApiService(token: String? = null): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val clientBuilder = OkHttpClient.Builder().addInterceptor(loggingInterceptor)
 
+        // Tambahkan interceptor untuk token jika tersedia
         token?.let {
             val authInterceptor = Interceptor { chain ->
                 val request = chain.request()
@@ -27,12 +28,11 @@ object ApiConfig {
 
         val client = clientBuilder.build()
 
-        val retrofit = Retrofit.Builder()
+        return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-
-        return retrofit.create(ApiService::class.java)
+            .create(ApiService::class.java)
     }
 }

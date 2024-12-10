@@ -8,31 +8,32 @@ import com.dicoding.ecofiproject.data.response.PredictionResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.Response as RetrofitResponse
 
 class ScanViewModel : ViewModel() {
 
     fun predictImage(token: String, imagePart: MultipartBody.Part): LiveData<PredictionResponse?> {
         val result = MutableLiveData<PredictionResponse?>()
-        val apiService = ApiConfig.getApiService(token)
+        val apiService = ApiConfig.getApiService()
 
         apiService.predictImage("Bearer $token", imagePart)
             .enqueue(object : Callback<PredictionResponse> {
                 override fun onResponse(
                     call: Call<PredictionResponse>,
-                    response: Response<PredictionResponse>
+                    response: RetrofitResponse<PredictionResponse>
                 ) {
                     if (response.isSuccessful) {
-                        result.postValue(response.body())
+                        result.postValue(response.body()) // Return the response body
                     } else {
-                        result.postValue(null)
+                        result.postValue(null) // Error case
                     }
                 }
 
                 override fun onFailure(call: Call<PredictionResponse>, t: Throwable) {
-                    result.postValue(null)
+                    result.postValue(null) // Error case
                 }
             })
+
         return result
     }
 }
