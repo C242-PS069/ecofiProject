@@ -52,3 +52,5 @@ interface ApiService {
     @GET("/api/recycles/{id}")
     fun getRecycleDetails(@Path("id") id: Int): Call<RecycleDetailsResponse>
 }
+
+//Test
