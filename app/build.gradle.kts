@@ -27,59 +27,47 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 
-    viewBinding {
-        enable = true
-    }
-
     buildFeatures {
-        dataBinding = true
+        viewBinding = true // Aktifkan View Binding
+        dataBinding = true // Hanya jika Data Binding diperlukan
     }
 }
 
 dependencies {
-    implementation (libs.androidx.core.ktx.v1120)
-    implementation (libs.androidx.appcompat.v161)
-    implementation (libs.material.v190)
-    implementation (libs.androidx.activity.ktx)
-    implementation (libs.androidx.constraintlayout.v214)
-    implementation (libs.androidx.fragment.ktx)
-    implementation ("me.relex:circleindicator:2.1.6")
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.preference.ktx)
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
-    implementation (libs.logging.interceptor)
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    // Core AndroidX libraries
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation (libs.gson.v2101)
-    implementation ("com.squareup.picasso:picasso:2.8")
-    implementation(libs.gson)
-    implementation (libs.androidx.datastore.preferences)
-    implementation (libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.datastore.core.android)
-    implementation(libs.androidx.datastore.preferences.core.jvm)
-    implementation(libs.androidx.camera.core)
-    implementation(libs.androidx.camera.view)
-    implementation (libs.glide)
-    annotationProcessor (libs.glide.compiler)
-    implementation(libs.androidx.camera.lifecycle)
-    implementation(libs.androidx.cardview)
-    implementation (libs.material.v180)
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.google.code.gson:gson:2.8.9")
-
-    testImplementation (libs.junit)
-    implementation ("com.squareup.okhttp3:okhttp:4.11.0")
-    androidTestImplementation (libs.androidx.junit.v115)
-    androidTestImplementation (libs.androidx.espresso.core.v351)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.picasso:picasso:2.8")
+    implementation("com.github.bumptech.glide:glide:4.15.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
+    implementation("me.relex:circleindicator:2.1.6")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

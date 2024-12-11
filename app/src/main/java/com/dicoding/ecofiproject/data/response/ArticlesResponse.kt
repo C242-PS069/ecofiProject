@@ -1,14 +1,16 @@
 package com.dicoding.ecofiproject.data.response
 
+import com.google.gson.annotations.SerializedName
+
 data class ArticlesResponse(
-    val status: String,
-    val message: String,
-    val data: List<Article>
+    @SerializedName("status") val status: String,
+    @SerializedName("message") val message: String,
+    @SerializedName("data") val data: List<Article>
 ) {
     data class Article(
-        val id: String,
-        val title: String,
-        val description: String,
-        val image: String
+        @SerializedName("id") val id: Int,
+        @SerializedName("title") val title: String,
+        @SerializedName("description") val description: String,
+        @SerializedName("image") val image: String
     )
 }
