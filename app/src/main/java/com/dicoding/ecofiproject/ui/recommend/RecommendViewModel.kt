@@ -10,7 +10,6 @@ class RecommendViewModel : ViewModel() {
     var description: String = "No Description"
     var imageUrl: String = ""
 
-    // Metode untuk mengatur data yang diterima dari Intent
     fun setData(material: String, confidence: String, title: String, description: String, imageUrl: String) {
         this.material = material
         this.confidence = confidence

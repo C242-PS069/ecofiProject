@@ -13,7 +13,6 @@ object ApiConfig {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val clientBuilder = OkHttpClient.Builder().addInterceptor(loggingInterceptor)
 
-        // Tambahkan interceptor untuk token jika tersedia
         token?.let {
             val authInterceptor = Interceptor { chain ->
                 val request = chain.request()

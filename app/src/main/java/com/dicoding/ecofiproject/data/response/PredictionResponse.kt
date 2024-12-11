@@ -3,21 +3,21 @@ package com.dicoding.ecofiproject.data.response
 import com.google.gson.annotations.SerializedName
 
 data class PredictionResponse(
-    @SerializedName("status") val status: String,           // Status permintaan
-    @SerializedName("message") val message: String,         // Pesan error atau informasi lainnya
-    @SerializedName("data") val data: List<DataItem>,      // Data rekomendasi yang dikirim dari API
-    @SerializedName("predict") val predict: Predict         // Hasil prediksi dari gambar
+    @SerializedName("status") val status: String,
+    @SerializedName("message") val message: String,
+    @SerializedName("data") val data: List<DataItem>,
+    @SerializedName("predict") val predict: Predict
 )
 
 data class DataItem(
-    @SerializedName("id") val id: Int,                     // ID item
-    @SerializedName("description") val description: String, // Deskripsi produk
-    @SerializedName("image") val image: String,             // URL gambar produk
-    @SerializedName("materials") val materials: List<String>,// List material terkait
-    @SerializedName("title") val title: String              // Judul produk
+    @SerializedName("id") val id: Int,
+    @SerializedName("description") val description: String,
+    @SerializedName("image") val image: String,
+    @SerializedName("materials") val materials: List<String>,
+    @SerializedName("title") val title: String
 )
 
 data class Predict(
-    @SerializedName("confident") val confident: String,     // Tingkat kepercayaan prediksi
-    @SerializedName("label") val label: String              // Label material yang diprediksi
+    @SerializedName("confident") val confident: String,
+    @SerializedName("label") val label: String
 )
