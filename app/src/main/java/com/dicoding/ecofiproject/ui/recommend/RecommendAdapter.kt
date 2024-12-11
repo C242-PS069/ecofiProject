@@ -28,7 +28,7 @@ class RecommendationAdapter(private val recommendations: List<Recommendation>) :
         holder.titleTextView.text = recommendation.title
         holder.descriptionTextView.text = recommendation.description
         if (recommendation.imageUrl.isNotEmpty()) {
-           Picasso.get().load(recommendation.imageUrl).into(holder.imageView)
+            Picasso.get().load(recommendation.imageUrl).into(holder.imageView)
         }
     }
 
