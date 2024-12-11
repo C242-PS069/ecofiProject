@@ -62,5 +62,8 @@
     <string name="password_rgs">Password</string>
     <string name="quotes2">“Your Camera, Your Vision”</string>
     <string name="create">Create</string>
+    <string name="username_icon">username</string>
+    <string name="email_icon">email\n</string>
+    <string name="about_us">about us</string>
 
 </resources>

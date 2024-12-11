@@ -27,7 +27,7 @@
     <color name="gray">#9E9E9E</color> <!-- Warna abu-abu netral -->
     <color name="light_gray">#E0E0E0</color> <!-- Warna abu-abu terang -->
     <color name="dark_gray">#616161</color> <!-- Warna abu-abu gelap -->
-
+    <color name="divider_gray">#B0B0B0</color> <!-- Define divider gray color -->
     <!-- Error and Warning Colors -->
     <color name="error">#F44336</color> <!-- Warna untuk pesan error -->
     <color name="warning">#FF9800</color> <!-- Warna untuk peringatan -->

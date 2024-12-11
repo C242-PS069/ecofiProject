@@ -14,6 +14,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints">
 
+
         <!-- TextView untuk My Profile -->
         <TextView
             android:id="@+id/tv_my_profile"
@@ -26,6 +27,96 @@
             android:fontFamily="sans-serif-medium"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp" />
+
+        <!-- Profile Picture and Details Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/iv_profile_picture"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/profile_circle_background"
+                android:contentDescription="@string/profile_picture"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/background_card"
+                android:elevation="4dp"
+                android:layout_margin="8dp">
+
+                <!-- Username Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Icon -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_user"
+                        android:contentDescription="@string/username_icon"
+                        android:layout_marginEnd="8dp" />
+
+                    <!-- Username -->
+                    <TextView
+                        android:id="@+id/tvUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/username"
+                        android:textSize="18sp"
+                        android:textColor="@color/buttonText"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="start" />
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_gray"
+                    android:layout_marginVertical="8dp" />
+
+                <!-- Email Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Icon -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_email"
+                        android:contentDescription="@string/email_icon"
+                        android:layout_marginEnd="8dp" />
+
+                    <!-- Email -->
+                    <TextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nmemail"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="start" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Konten ScrollView -->
@@ -41,75 +132,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <!-- Profile Picture Section -->
-            <FrameLayout
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:id="@+id/iv_profile_picture"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/profile_circle_background"
-                    android:contentDescription="@string/profile_picture"
-                    android:scaleType="centerCrop" />
-
-            </FrameLayout>
-
-            <!-- Name and Email Section -->
+            <!-- Theme Switch Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <!-- Name -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="@string/username"
-                    android:enabled="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false">
+                    android:layout_weight="1"
+                    android:text="@string/theme"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_gray"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingEnd="12dp" />
 
-                    <TextView
-                        android:id="@+id/tvUsername"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/username"
-                        android:textSize="18sp"
-                        android:fontFamily="sans-serif-medium"
-                        android:gravity="center"
-                        android:focusable="false"
-                        android:clickable="false" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Email -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tvEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/nmemail"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/darker_gray"
-                        android:fontFamily="sans-serif-light"
-                        android:gravity="center"
-                        android:focusable="true"
-                        android:clickable="true" />
-                </com.google.android.material.textfield.TextInputLayout>
+                <Switch
+                    android:id="@+id/switch_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:thumbTint="@android:color/white"
+                    android:trackTint="@android:color/darker_gray"
+                    android:paddingEnd="8dp"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
-            <!-- Theme Switch -->
+            <!-- Language Switch Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,59 +176,60 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingEnd="8dp"
-                    android:text="@string/theme"
+                    android:text="@string/language"
                     android:textSize="16sp"
-                    />
+                    android:textColor="@color/dark_gray"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingEnd="12dp" />
 
                 <Switch
-                    android:id="@+id/switch_theme"
+                    android:id="@+id/switch_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
+                    android:thumbTint="@android:color/white"
+                    android:trackTint="@android:color/darker_gray"
+                    android:paddingEnd="8dp"
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-
             </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingEnd="8dp"
-                android:text="@string/language"
-                android:textSize="16sp"
-                />
-
-            <Switch
-                android:id="@+id/switch_language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-            </LinearLayout>
-
+            
 
             <!-- Text "Aesthetic Coming Soon Features" -->
-            <TextView
-                android:id="@+id/tv_coming_soon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/coming_soon"
-                android:textSize="14sp"
-                android:textColor="@android:color/darker_gray"
-                android:textStyle="italic"
-                android:gravity="center"
-                android:layout_marginTop="60dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="bottom|center_horizontal"
+                android:padding="16dp">
+
+                <!-- Text "Aesthetic Coming Soon Features" -->
+                <TextView
+                    android:id="@+id/tv_coming_soon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
+                    android:text="@string/coming_soon"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <!-- About Us Section -->
+                <TextView
+                    android:id="@+id/tv_about_us"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_us"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="1dp"/>
+            </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
 
     <!-- Tombol Edit Profile dan Logout di bawah -->
@@ -191,7 +247,6 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="#2299A5"
             android:text="@string/edit_profile" />
-
 
         <Button
             android:id="@+id/btn_logout"
