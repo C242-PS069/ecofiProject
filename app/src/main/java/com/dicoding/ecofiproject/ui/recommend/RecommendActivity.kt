@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ecofiproject.R
-import com.squareup.picasso.Picasso
 
 class RecommendActivity : AppCompatActivity() {
 
@@ -34,36 +33,26 @@ class RecommendActivity : AppCompatActivity() {
         // Get data from intent and pass to ViewModel
         val material = intent.getStringExtra("MATERIAL") ?: "No material"
         val confidence = intent.getStringExtra("CONFIDENCE") ?: "No confidence"
-        val title = intent.getStringExtra("TITLE") ?: "Unknown Title"
-        val description = intent.getStringExtra("DESCRIPTION") ?: "No Description"
-        val imageUrl = intent.getStringExtra("IMAGE_URL") ?: ""
+        val itemLists =
+            intent.getParcelableArrayListExtra<com.dicoding.ecofiproject.data.response.DataItem>("ITEMLIST")
 
         // Set data in ViewModel
-        recommendViewModel.setData(material, confidence, title, description, imageUrl)
+        recommendViewModel.setData(material, confidence, itemLists ?: arrayListOf())
 
         // Set data to the TextViews using ViewModel
         materialTextView.text = recommendViewModel.material
         confidenceTextView.text = recommendViewModel.confidence
-        titleTextView.text = recommendViewModel.title
-        descriptionTextView.text = recommendViewModel.description
 
         // Load image using Picasso if URL is not empty
-        if (recommendViewModel.imageUrl.isNotEmpty()) {
-            Picasso.get().load(recommendViewModel.imageUrl).into(imageView)
 
-            // Sample data for recommendations
-            val recommendations = listOf(
-                Recommendation("$title", "$description", "$imageUrl"),
-                Recommendation("$title", "$description", "$imageUrl"),
-                Recommendation("$title", "$description", "$imageUrl"),
-                Recommendation("$title", "$description", "$imageUrl")
-            )
+        // Sample data for recommendations
 
-            val recommendationAdapter = RecommendationAdapter(recommendations)
-            val recyclerView: RecyclerView = findViewById(R.id.recommendation_list)
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = recommendationAdapter
 
-        }
+        val recommendationAdapter = RecommendationAdapter(itemLists)
+        val recyclerView: RecyclerView = findViewById(R.id.recommendation_list)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = recommendationAdapter
+
+
     }
 }

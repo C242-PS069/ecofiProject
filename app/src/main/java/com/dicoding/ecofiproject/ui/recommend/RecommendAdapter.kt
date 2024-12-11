@@ -7,32 +7,29 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.ecofiproject.R
+import com.dicoding.ecofiproject.data.response.DataItem
 import com.squareup.picasso.Picasso
+import java.util.ArrayList
 
-data class Recommendation(
-    val title: String,
-    val description: String,
-    val imageUrl: String
-)
-
-class RecommendationAdapter(private val recommendations: List<Recommendation>) :
+class RecommendationAdapter(private val recommendations: ArrayList<DataItem>?) :
     RecyclerView.Adapter<RecommendationAdapter.RecommendationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendationViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recommend, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_recommend, parent, false)
         return RecommendationViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecommendationViewHolder, position: Int) {
-        val recommendation = recommendations[position]
+        val recommendation = recommendations?.get(position) ?: DataItem(0, "", "", emptyList(), "")
         holder.titleTextView.text = recommendation.title
         holder.descriptionTextView.text = recommendation.description
-        if (recommendation.imageUrl.isNotEmpty()) {
-            Picasso.get().load(recommendation.imageUrl).into(holder.imageView)
+        if (recommendation.image.isNotEmpty()) {
+            Picasso.get().load(recommendation.image).into(holder.imageView)
         }
     }
 
-    override fun getItemCount(): Int = recommendations.size
+    override fun getItemCount(): Int = recommendations?.size ?: 0
 
     class RecommendationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.material_title)

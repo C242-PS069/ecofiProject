@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -73,6 +74,10 @@ dependencies {
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.cardview)
     implementation (libs.material.v180)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.code.gson:gson:2.8.9")
+
     testImplementation (libs.junit)
     implementation ("com.squareup.okhttp3:okhttp:4.11.0")
     androidTestImplementation (libs.androidx.junit.v115)

@@ -1,41 +1,35 @@
 package com.dicoding.ecofiproject.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.ecofiproject.R
 import com.dicoding.ecofiproject.data.response.ArticlesResponse
 import com.dicoding.ecofiproject.databinding.ItemArticleBinding
 
 class ArticleAdapter(
     private val articles: List<ArticlesResponse.Article>,
-    private val onReadMoreClick: (ArticlesResponse.Article) -> Unit
+    private val onItemClick: (ArticlesResponse.Article) -> Unit
 ) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
-    inner class ArticleViewHolder(private val binding: ItemArticleBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ArticleViewHolder(private val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(article: ArticlesResponse.Article) {
             binding.articleTitle.text = article.title
             binding.articleDescription.text = article.description
             Glide.with(binding.cover.context)
                 .load(article.image)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(android.R.color.darker_gray) // Placeholder jika gambar belum tersedia
                 .into(binding.cover)
 
-            binding.readMore.setOnClickListener {
-                onReadMoreClick(article)
+            // Klik item
+            binding.root.setOnClickListener {
+                onItemClick(article)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val binding = ItemArticleBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+        val binding = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArticleViewHolder(binding)
     }
 

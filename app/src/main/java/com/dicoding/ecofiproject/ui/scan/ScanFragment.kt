@@ -137,7 +137,8 @@ class ScanFragment : Fragment() {
                         // Pastikan respons tidak null
                         responseBody?.let {
                             val predict = it.predict
-                            val dataItem = it.data?.firstOrNull()
+                            println("DEBUG_API: $it")
+                            val dataItem : ArrayList<com.dicoding.ecofiproject.data.response.DataItem> = it.data as ArrayList<com.dicoding.ecofiproject.data.response.DataItem>
 
                             // Mengecek apakah prediksi tersedia dan valid
                             // Mengecek apakah prediksi tersedia dan valid
@@ -145,9 +146,7 @@ class ScanFragment : Fragment() {
                                 val intent = Intent(requireContext(), RecommendActivity::class.java).apply {
                                     putExtra("MATERIAL", predict.label)  // Label material yang diprediksi
                                     putExtra("CONFIDENCE", predict.confident)  // Confidence level prediksi
-                                    putExtra("TITLE", dataItem?.title ?: "Unknown Title")  // Judul produk
-                                    putExtra("DESCRIPTION", dataItem?.description ?: "No Description")  // Deskripsi produk
-                                    putExtra("IMAGE_URL", dataItem?.image ?: "")  // URL gambar produk
+                                    putParcelableArrayListExtra("ITEMLIST", dataItem)  // Judul produk
                                 }
                                 startActivity(intent)
                             } else {
