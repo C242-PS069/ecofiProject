@@ -56,7 +56,6 @@ class RecommendActivity : AppCompatActivity() {
                 Recommendation("$title", "$description", "$imageUrl"),
                 Recommendation("$title", "$description", "$imageUrl"),
                 Recommendation("$title", "$description", "$imageUrl"),
-                Recommendation("$title", "$description", "$imageUrl")
             )
 
             val recommendationAdapter = RecommendationAdapter(recommendations)
