@@ -67,10 +67,8 @@
 
         <activity android:name=".ui.recommend.RecommendDetailActivity"></activity>
 
-        <activity
-            android:name=".ui.recycle.RecycleDetailsActivity"
-            android:exported="false"></activity>
-
+        <activity android:name=".ui.pro.ProActivity">
+    </activity>
 
     </application>
 

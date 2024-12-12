@@ -25,7 +25,7 @@ class RecommendActivity : AppCompatActivity() {
 
 
         val material = intent.getStringExtra("MATERIAL") ?: "No material"
-        val confidence = (intent.getStringExtra("CONFIDENCE") + " % accuracy") ?: "No confidence"
+        val confidence = (intent.getStringExtra("CONFIDENCE") + "% accuracy") ?: "No confidence"
         val itemLists =
             intent.getParcelableArrayListExtra<com.dicoding.ecofiproject.data.response.DataItem>("ITEMLIST")
 

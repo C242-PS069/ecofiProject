@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -14,6 +15,8 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.dicoding.ecofiproject.MainActivity
+import com.dicoding.ecofiproject.R
+import com.dicoding.ecofiproject.ui.pro.ProActivity
 import com.dicoding.ecofiproject.data.UserRepository
 import com.dicoding.ecofiproject.data.pref.UserPreference
 import com.dicoding.ecofiproject.databinding.FragmentProfileBinding
@@ -63,6 +66,16 @@ class ProfileFragment : Fragment() {
             .load(profileImageUrl)
             .into(binding.ivProfilePicture)
 
+        // Terapkan animasi bounce pada ImageView
+        val bounceAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.bounce)
+        binding.imageView.startAnimation(bounceAnimation)
+
+        // Listener untuk imageView
+        binding.imageView.setOnClickListener {
+            val intent = Intent(requireContext(), ProActivity::class.java)
+            startActivity(intent)
+        }
+
         // Inisialisasi switch tema
         val themePreferences = (activity as MainActivity).getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
         val isDarkMode = themePreferences.getBoolean("dark_mode", false)
@@ -70,9 +83,7 @@ class ProfileFragment : Fragment() {
 
         // Listener untuk switch tema
         binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            // Simpan preferensi tema
             (activity as MainActivity).saveThemePreference(isChecked)
-            // Update tema tanpa restart aktivitas
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
@@ -87,10 +98,7 @@ class ProfileFragment : Fragment() {
 
         // Listener untuk switch bahasa
         binding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
-            // Simpan preferensi bahasa
             languagePreferences.edit().putBoolean("language_indonesia", isChecked).apply()
-
-            // Ubah bahasa aplikasi
             if (isChecked) {
                 setLocale("id") // Bahasa Indonesia
             } else {
@@ -104,7 +112,7 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Tambahkan listener untuk tombol logout
+        // Listener untuk tombol logout
         binding.btnLogout.setOnClickListener {
             logout()
         }
@@ -117,17 +125,13 @@ class ProfileFragment : Fragment() {
         config.setLocale(locale)
         requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
 
-        // Restart activity untuk menerapkan perubahan bahasa
         val intent = Intent(requireContext(), MainActivity::class.java)
         startActivity(intent)
     }
 
     private fun logout() {
-        // Lakukan operasi logout dalam Coroutine
         CoroutineScope(Dispatchers.Main).launch {
             userRepository.logout()
-
-            // Redirect ke Login Activity
             val intent = Intent(requireContext(), LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

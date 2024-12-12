@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
-import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import android.view.View
 import com.dicoding.ecofiproject.R
 import com.dicoding.ecofiproject.ViewModelFactory
 import com.dicoding.ecofiproject.databinding.ActivityRegisterBinding
@@ -30,8 +32,12 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Setup view dan action
         setupView()
         setupAction()
+
+        // Terapkan animasi
+        applyAnimations()
     }
 
     private fun setupView() {
@@ -145,5 +151,17 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun applyAnimations() {
+        // Logo bergerak kanan kiri
+        val logoImage = binding.logoImage
+        val logoAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.move_logo)
+        logoImage.startAnimation(logoAnim)
+
+        // Tombol register dengan animasi scale
+        val registerButton = binding.registerButton
+        val scaleAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_button)
+        registerButton.startAnimation(scaleAnim)
     }
 }

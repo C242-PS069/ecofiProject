@@ -1,12 +1,13 @@
 package com.dicoding.ecofiproject.ui.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.EditText
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,8 +31,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Setup view dan action
         setupView()
         setupActions()
+
+        // Terapkan animasi
+        applyAnimations()
     }
 
     private fun setupView() {
@@ -76,8 +81,8 @@ class LoginActivity : AppCompatActivity() {
     private fun togglePasswordVisibility() {
         isPasswordVisible = !isPasswordVisible
 
-        val passwordField: EditText = binding.edLoginPassword
-        val eyeIcon: ImageView = binding.eyeIcon
+        val passwordField = binding.edLoginPassword
+        val eyeIcon = binding.eyeIcon
 
         if (isPasswordVisible) {
             passwordField.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
@@ -113,5 +118,27 @@ class LoginActivity : AppCompatActivity() {
             create()
             show()
         }
+    }
+
+    private fun applyAnimations() {
+        // Logo bergerak kanan kiri
+        val logoImage: ImageView = binding.logoImage
+        val logoAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.move_logo)
+        logoImage.startAnimation(logoAnim)
+
+        // Teks "Welcome" fade-in
+        val welcomeText: TextView = binding.welcomeText
+        val welcomeAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        welcomeText.startAnimation(welcomeAnim)
+
+        // Teks "Quotes" fade-in
+        val subtitleText: TextView = binding.subtitleText
+        val subtitleAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        subtitleText.startAnimation(subtitleAnim)
+
+        // Tombol login dengan animasi scale
+        val loginButton: Button = binding.loginButton
+        val scaleAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_button)
+        loginButton.startAnimation(scaleAnim)
     }
 }
