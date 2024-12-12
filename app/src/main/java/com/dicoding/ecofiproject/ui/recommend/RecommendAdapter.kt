@@ -11,8 +11,10 @@ import com.dicoding.ecofiproject.data.response.DataItem
 import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
-class RecommendationAdapter(private val recommendations: ArrayList<DataItem>?) :
-    RecyclerView.Adapter<RecommendationAdapter.RecommendationViewHolder>() {
+class RecommendationAdapter(
+    private val recommendations: ArrayList<DataItem>?,
+    private val onItemClick: (DataItem) -> Unit
+) : RecyclerView.Adapter<RecommendationAdapter.RecommendationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendationViewHolder {
         val view =
@@ -21,11 +23,15 @@ class RecommendationAdapter(private val recommendations: ArrayList<DataItem>?) :
     }
 
     override fun onBindViewHolder(holder: RecommendationViewHolder, position: Int) {
-        val recommendation = recommendations?.get(position) ?: DataItem(0, "", "", emptyList(), "")
+        val recommendation = recommendations?.get(position) ?: DataItem(0, "", "", emptyList(), "", "")
         holder.titleTextView.text = recommendation.title
         holder.descriptionTextView.text = recommendation.description
         if (recommendation.image.isNotEmpty()) {
             Picasso.get().load(recommendation.image).into(holder.imageView)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick(recommendation)
         }
     }
 

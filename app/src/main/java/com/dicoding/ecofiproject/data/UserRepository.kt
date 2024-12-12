@@ -89,7 +89,7 @@ class UserRepository private constructor(
 
 
     // Fungsi baru untuk mendapatkan detail prediksi
-    fun getRecycleDetails(id: Int): Call<RecycleDetailsResponse> {
+    suspend fun getRecycleDetails(id: Int): Response<RecycleDetailsResponse> {
         return ApiConfig.getApiService().getRecycleById(id)
     }
 

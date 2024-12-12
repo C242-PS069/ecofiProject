@@ -1,48 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- VideoView untuk video rekomendasi -->
-        <LinearLayout
+        <!-- Title -->
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/recommendationVideo"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
-            android:orientation="vertical" >
-
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/recommendation_video"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp" />
 
         <TextView
-            android:id="@+id/recommendation_title"
+            android:id="@+id/recommendationTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Judul Rekomendasi"
-            android:textSize="18sp"
+            android:text="Judul"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:layout_marginBottom="8dp" />
 
+        <!-- Description -->
         <TextView
-            android:id="@+id/recommendation_description"
+            android:id="@+id/recommendationDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:lineSpacingExtra="4dp"
-            android:text="Deskripsi Rekomendasi"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:text="Deskripsi"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tools Title -->
+        <TextView
+            android:id="@+id/toolsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bahan dan Alat"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Tools List -->
+        <TextView
+            android:id="@+id/toolsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List bahan dan alat"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Steps Title -->
+        <TextView
+            android:id="@+id/makesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Langkah-langkah"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Steps List -->
+        <TextView
+            android:id="@+id/makesSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Langkah-langkah pembuatan"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Video Player -->
+
     </LinearLayout>
 </ScrollView>

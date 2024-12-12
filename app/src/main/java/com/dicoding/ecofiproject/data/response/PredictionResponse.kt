@@ -16,7 +16,8 @@ data class DataItem(
     @SerializedName("description") val description: String, // Deskripsi produk
     @SerializedName("image") val image: String,             // URL gambar produk
     @SerializedName("materials") val materials: List<String>,// List material terkait
-    @SerializedName("title") val title: String              // Judul produk
+    @SerializedName("title") val title: String,
+    @SerializedName("video")val video: String?// Judul produk
 ) : Parcelable
 
 data class Predict(
