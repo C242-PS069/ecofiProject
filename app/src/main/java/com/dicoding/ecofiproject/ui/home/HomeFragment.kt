@@ -37,43 +37,49 @@ class HomeFragment : Fragment() {
     private fun loadArticles() {
         lifecycleScope.launch {
             try {
-                val session = UserPreference.getInstance(requireContext().dataStore).getSession().first()
+                // Memastikan fragment terpasang sebelum mengakses konteks
+                val context = context ?: return@launch
+
+                val session = UserPreference.getInstance(context.dataStore).getSession().first()
                 if (session.token.isNotEmpty()) {
                     val response = ApiConfig.getApiService(session.token).getAllArticles()
                     if (response.isSuccessful && response.body() != null) {
                         val articles = response.body()!!.data
                         setupRecyclerView(articles)
                     } else {
-                        Toast.makeText(requireContext(), "Gagal memuat artikel", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Gagal memuat artikel", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(requireContext(), "Token tidak ditemukan, silakan login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Token tidak ditemukan, silakan login", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                // Menangani kesalahan dengan aman menggunakan konteks yang ada
+                val context = context ?: return@launch
+                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 
     private fun setupRecyclerView(articles: List<ArticlesResponse.Article>) {
         val adapter = ArticleAdapter(articles) { article ->
             navigateToArticleDetail(article.id.toString())
         }
+
+        // Menggunakan requireContext() hanya setelah memastikan fragment terpasang.
         binding.rvArticles.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvArticles.adapter = adapter
         binding.rvArticles.setHasFixedSize(true)
     }
 
-
     private fun navigateToArticleDetail(articleId: String) {
+        // Menggunakan requireContext() di sini juga aman karena dipanggil setelah fragment terpasang.
         Toast.makeText(requireContext(), "Buka artikel ID: $articleId", Toast.LENGTH_SHORT).show()
-        // Implement navigasi ke detail artikel jika diperlukan
+        // Implement navigasi ke detail artikel jika diperlukan.
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding = null // Menghindari kebocoran memori dengan menghapus binding.
     }
 }
