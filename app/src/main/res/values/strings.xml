@@ -66,5 +66,7 @@
     <string name="email_icon">email\n</string>
     <string name="about_us">about us</string>
     <string name="image_description">pro</string>
+    <string name="item_desc">Alat dan Bahan yang Dibutuhkan:\n\n- Botol bekas\n- Spidol\n- Kertas pelangi\n- Lem\n- Gunting atau cutter.\n\nLangkah-langkah Cara Membuatnya:\n\n1. Potong botol yang akan digunakan sebagai wadah. Buang sisa potongan botol yang tidak digunakan.\n2. Buat penutup botol atau sampul dari kertas pelangi. Sampul botol menggunakan kertas pelangi hingga semua sisi tertutup.\n3. Buat pola-pola unik menggunakan kertas pelangi. Contohnya, kamu dapat menggambar alis, mata, hidung, dan mulut.\n4. Pasang bentuk tersebut pada tempat pensil. Hal tersebut akan membuat wadah pensil menjadi seperti karakter kartun.\n5. Tempat pensil yang lucu dan unik siap untuk digunakan.</string>
+    <string name="procedure">1. Pilih bahan sampah dengan kualitas terbaik.\n2. Klik tombol Camera untuk memotret atau Gallery untuk memilih dari galeri.\n3. Pastikan gambar jelas untuk hasil kreasi optimal.\n4. Tekan Scan untuk memulai proses identifikasi bahan sampah.\n5. Tunggu hasil dan kreasikan bahan sesuai ide Anda!</string>
 
 </resources>

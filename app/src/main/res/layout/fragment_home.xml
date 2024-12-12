@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,25 +21,19 @@
         android:layout_marginTop="95dp"
         android:layout_marginRight="80dp"
         android:background="@drawable/rounded_background_input1"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/icon_image"
+            android:id="@+id/icon_image1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/pro" />
 
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="3dp"
-            android:text="Kreasikan"
-            android:textSize="10sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,6 +50,7 @@
             android:layout_marginTop="1dp"
             app:srcCompat="@drawable/logo" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -64,16 +58,16 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="55dp"
         android:text="#Mari Kreasikan Sampahmu\n Menjadi Lebih Bermanfaat"
+        android:textColor="@color/white"
         android:textSize="10sp"
-        android:textStyle="bold"
-        android:textColor="@color/white" />
+        android:textStyle="bold" />
 
     <!-- Konten utama -->
     <LinearLayout
         android:id="@+id/main_content"
-        android:layout_marginTop="180dp"
         android:layout_width="match_parent"
         android:layout_height="564dp"
+        android:layout_marginTop="170dp"
         android:orientation="vertical">
 
         <TextView
@@ -118,9 +112,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 app:iss_auto_cycle="true"
-                app:iss_period="5000"
                 app:iss_delay="5000"
-                app:iss_text_align="CENTER"/>
+                app:iss_period="5000"
+                app:iss_text_align="CENTER" />
 
         </LinearLayout>
     </LinearLayout>

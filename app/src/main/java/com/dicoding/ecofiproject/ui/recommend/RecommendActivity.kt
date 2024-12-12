@@ -23,10 +23,12 @@ class RecommendActivity : AppCompatActivity() {
         materialTextView = findViewById(R.id.material_output)
         confidenceTextView = findViewById(R.id.material_accuracy)
 
+
         val material = intent.getStringExtra("MATERIAL") ?: "No material"
-        val confidence = intent.getStringExtra("CONFIDENCE") ?: "No confidence"
+        val confidence = (intent.getStringExtra("CONFIDENCE") + " % accuracy") ?: "No confidence"
         val itemLists =
             intent.getParcelableArrayListExtra<com.dicoding.ecofiproject.data.response.DataItem>("ITEMLIST")
+
 
         recommendViewModel.setData(material, confidence, itemLists ?: arrayListOf())
 
