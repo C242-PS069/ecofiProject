@@ -11,7 +11,6 @@ class RecommendViewModel : ViewModel() {
     private var itemLists: ArrayList<DataItem> = arrayListOf()
 
 
-    // Metode untuk mengatur data yang diterima dari Intent
     fun setData(material: String, confidence: String, itemLists: ArrayList<DataItem>) {
         this.material = material
         this.confidence = confidence

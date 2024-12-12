@@ -2,7 +2,7 @@
     <!-- General Strings -->
     <string name="app_name">Ecofy</string>
     <string name="save_changes">Simpan perubahan</string>
-    <string name="edit_profile">Edit Profil</string>
+    <string name="edit_profile">Edit Password</string>
 
     <!-- Home Section -->
     <string name="article_cover">Sampul Artikel</string>

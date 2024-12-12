@@ -2,7 +2,7 @@
     <!-- General Strings -->
     <string name="app_name">Ecofy</string>
     <string name="save_changes">Save changes</string>
-    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_profile">Edit Password</string>
 
     <!-- Home Section -->
     <string name="article_cover">Article Cover</string>
@@ -65,5 +65,6 @@
     <string name="username_icon">username</string>
     <string name="email_icon">email\n</string>
     <string name="about_us">about us</string>
+    <string name="image_description">pro</string>
 
 </resources>

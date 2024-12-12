@@ -63,6 +63,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("com.github.bumptech.glide:glide:4.15.0")
+    implementation(libs.cronet.embedded)
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
     implementation("me.relex:circleindicator:2.1.6")
     implementation("androidx.datastore:datastore-preferences:1.0.0")

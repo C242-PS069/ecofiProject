@@ -113,21 +113,5 @@
         tools:listitem="@layout/item_recommend" />
 
     <!-- Material Title (disembunyikan dan digunakan dalam kode) -->
-    <TextView
-        android:id="@+id/material_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/recommendation_list" />
-
-    <!-- Material Description (disembunyikan dan digunakan dalam kode) -->
-    <TextView
-        android:id="@+id/material_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/material_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
