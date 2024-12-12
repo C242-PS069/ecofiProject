@@ -98,7 +98,7 @@
         <LinearLayout
             android:id="@+id/information_section"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:background="@color/light_gray"
             android:orientation="vertical">
@@ -114,17 +114,15 @@
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_page_banner"
-                android:layout_width="match_parent"
-                android:layout_height="140dp" />
-
-            <me.relex.circleindicator.CircleIndicator
-                android:id="@+id/circle_indicator"
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/banner_image"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp" />
+                android:layout_height="150dp"
+                app:iss_auto_cycle="true"
+                app:iss_period="5000"
+                app:iss_delay="5000"
+                app:iss_text_align="CENTER"/>
+
         </LinearLayout>
     </LinearLayout>
 

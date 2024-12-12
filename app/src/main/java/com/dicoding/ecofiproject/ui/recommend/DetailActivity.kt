@@ -19,7 +19,7 @@ class RecommendDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.detail_recommend)
+        setContentView(R.layout.activity_recommendation_detail)
 
         // Inisialisasi Views
         itemTitle = findViewById(R.id.item_title)

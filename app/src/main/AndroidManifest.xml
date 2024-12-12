@@ -52,6 +52,12 @@
             android:exported="false">
         </activity>
 
+        <activity
+            android:name=".ui.home.DetailArticleActivity"
+            android:exported="false">
+            <!-- Optional configurations -->
+        </activity>
+
         <activity android:name=".ui.profile.EditProfileActivity"
             android:exported="false">
         </activity>
