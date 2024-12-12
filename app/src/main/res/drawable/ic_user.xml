@@ -7,6 +7,6 @@
 
     <!-- User Silhouette -->
     <path
-        android:fillColor="@android:color/black"
+        android:fillColor="#2299A6"
         android:pathData="M12,14 C9.79,14 8,12.21 8,10 C8,7.79 9.79,6 12,6 C14.21,6 16,7.79 16,10 C16,12.21 14.21,14 12,14Z M12,16 C14.66,16 18,17.34 18,20 C18,20.55 17.55,21 17,21 H7 C6.45,21 6,20.55 6,20 C6,17.34 9.34,16 12,16Z" />
 </vector>

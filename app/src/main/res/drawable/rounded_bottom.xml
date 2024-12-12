@@ -1,5 +1,14 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/teal_700" />
-    <corners android:bottomLeftRadius="30dp" android:bottomRightRadius="30dp" />
-    <padding android:top="10dp" />
+    <gradient
+        android:startColor="@color/teal_700"
+        android:centerColor="#1FA9BF"
+        android:endColor="#2096A0"
+        android:angle="45"
+        android:type="radial"
+        android:gradientRadius="200dp" />
+    <corners
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp" />
+    <padding
+        android:top="10dp" />
 </shape>

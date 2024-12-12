@@ -44,8 +44,11 @@
     <!-- Additional Custom Colors -->
     <color name="teal_700">#36C0CC</color>
     <color name="teal_200">#80CBC4</color>
+    <color name="blue_500">#1075C5</color>
+    <color name="purple_500">#673AB7</color>
 
-        <!-- Warna yang akan digunakan untuk tombol -->
+
+    <!-- Warna yang akan digunakan untuk tombol -->
         <color name="buttonBackground">#468BCD</color>
         <color name="buttonText">#FFFFFF</color>
 

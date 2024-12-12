@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/primary"
+                android:backgroundTint="#2F9BA7"
                 android:text="@string/save_profile" />
         </LinearLayout>
     </ScrollView>

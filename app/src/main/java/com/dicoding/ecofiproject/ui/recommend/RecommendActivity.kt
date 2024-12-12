@@ -13,9 +13,6 @@ class RecommendActivity : AppCompatActivity() {
 
     private lateinit var materialTextView: TextView
     private lateinit var confidenceTextView: TextView
-    private lateinit var titleTextView: TextView
-    private lateinit var descriptionTextView: TextView
-    private lateinit var imageView: ImageView
 
     private val recommendViewModel: RecommendViewModel by viewModels()  // ViewModel instance
 
@@ -23,30 +20,18 @@ class RecommendActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recommend)
 
-        // Initialize views
         materialTextView = findViewById(R.id.material_output)
         confidenceTextView = findViewById(R.id.material_accuracy)
-        titleTextView = findViewById(R.id.material_title)
-        descriptionTextView = findViewById(R.id.material_description)
-        imageView = findViewById(R.id.imageView)
 
-        // Get data from intent and pass to ViewModel
         val material = intent.getStringExtra("MATERIAL") ?: "No material"
         val confidence = intent.getStringExtra("CONFIDENCE") ?: "No confidence"
         val itemLists =
             intent.getParcelableArrayListExtra<com.dicoding.ecofiproject.data.response.DataItem>("ITEMLIST")
 
-        // Set data in ViewModel
         recommendViewModel.setData(material, confidence, itemLists ?: arrayListOf())
 
-        // Set data to the TextViews using ViewModel
         materialTextView.text = recommendViewModel.material
         confidenceTextView.text = recommendViewModel.confidence
-
-        // Load image using Picasso if URL is not empty
-
-        // Sample data for recommendations
-
 
         val recommendationAdapter = RecommendationAdapter(itemLists)
         val recyclerView: RecyclerView = findViewById(R.id.recommendation_list)

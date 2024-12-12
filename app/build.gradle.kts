@@ -45,9 +45,6 @@ android {
 
 dependencies {
     // Core AndroidX libraries
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.30")
-    implementation("com.google.android.exoplayer:exoplayer:2.18.1")
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
@@ -66,7 +63,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("com.github.bumptech.glide:glide:4.15.0")
-    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
     implementation("me.relex:circleindicator:2.1.6")
     implementation("androidx.datastore:datastore-preferences:1.0.0")

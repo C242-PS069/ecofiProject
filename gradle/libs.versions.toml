@@ -35,6 +35,7 @@ cameraCore = "1.4.0"
 cameraView = "1.4.0"
 cameraLifecycle = "1.4.0"
 cardview = "1.0.0"
+cronetEmbedded = "119.6045.31"
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -73,6 +74,7 @@ androidx-camera-core = { group = "androidx.camera", name = "camera-core", versio
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+cronet-embedded = { group = "org.chromium.net", name = "cronet-embedded", version.ref = "cronetEmbedded" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
