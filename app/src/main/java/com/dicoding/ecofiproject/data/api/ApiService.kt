@@ -50,11 +50,10 @@ interface ApiService {
         @Part image: MultipartBody.Part
     ): Call<PredictionResponse>
 
+    // Perbaiki deklarasi metode ini untuk menggunakan suspend
     @GET("api/recycles/{id}")
-    fun getRecycleById(
+    suspend fun getRecycleById(
         @Path("id") id: Int
-    ): Call<RecycleDetailsResponse>
+    ): Response<RecycleDetailsResponse>
 }
-
-
 //Test
