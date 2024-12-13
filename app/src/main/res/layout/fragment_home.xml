@@ -27,12 +27,28 @@
         app:layout_constraintTop_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/button_kreasikan"
+        android:id="@+id/button_kreasikan"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_kreasikan" />
+
+        <ImageView
+            android:id="@+id/button_user_engagement"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_kreasikan" />
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_user_engagement" />
+
+        <ImageView
+            android:id="@+id/button_bank_sampah"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_bank_sampah" />
 
     </LinearLayout>
 
@@ -49,6 +65,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginTop="1dp"
             app:srcCompat="@drawable/logo" />
+
     </LinearLayout>
 
     <TextView
@@ -132,5 +149,13 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/button_about"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/ic_information" />
 
 </RelativeLayout>

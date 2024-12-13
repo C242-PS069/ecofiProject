@@ -38,8 +38,22 @@ class HomeFragment : Fragment() {
         loadArticles()
         loadBanners()
 
-        // Tambahkan onClickListener untuk button_kreasikan
         binding.buttonKreasikan.setOnClickListener {
+            val intent = Intent(requireContext(), ProActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttonUserEngagement.setOnClickListener {
+            val intent = Intent(requireContext(), ProActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttonBankSampah.setOnClickListener {
+            val intent = Intent(requireContext(), ProActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttonAbout.setOnClickListener {
             val intent = Intent(requireContext(), ProActivity::class.java)
             startActivity(intent)
         }
