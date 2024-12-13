@@ -11,10 +11,9 @@ class ProActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pro)
 
-        // Tombol kembali
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         btnBack.setOnClickListener {
-            finish() // Kembali ke halaman sebelumnya
+            finish()
         }
     }
 }

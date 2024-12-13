@@ -23,7 +23,6 @@
         android:theme="@style/Theme.EcofiProject"
         tools:targetApi="31">
 
-        <!-- Set MainActivity as the launcher activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -36,38 +35,34 @@
 
         <activity android:name=".ui.onboarding.OnboardingActivity" android:exported="false" />
 
-        <!-- Set LoginActivity as internal only -->
         <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
-        <!-- Set RegisterActivity as internal only -->
+
         <activity
             android:name=".ui.register.RegisterActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
-        <!-- Define CameraActivity -->
         <activity
             android:name=".ui.scan.ScanFragment"
-            android:exported="false"></activity>
+            android:exported="false" />
 
         <activity
             android:name=".ui.home.DetailArticleActivity"
             android:exported="false">
-            <!-- Optional configurations -->
         </activity>
 
         <activity
             android:name=".ui.profile.EditProfileActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
         <activity
             android:name=".ui.recommend.RecommendActivity"
             android:exported="false">
-            <!-- Atau konfigurasi lainnya jika diperlukan -->
         </activity>
 
-        <activity android:name=".ui.recommend.RecommendDetailActivity"></activity>
+        <activity android:name=".ui.recommend.RecommendDetailActivity" />
 
         <activity android:name=".ui.pro.ProActivity">
 

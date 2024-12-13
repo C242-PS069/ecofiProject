@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- AppBar untuk Header -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -15,7 +14,6 @@
         tools:ignore="MissingConstraints">
 
 
-        <!-- TextView untuk My Profile -->
         <TextView
             android:id="@+id/tv_my_profile"
             android:layout_width="match_parent"
@@ -29,7 +27,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Profile Picture and Details Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,21 +81,18 @@
                         android:gravity="start" />
                 </LinearLayout>
 
-                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/divider_gray"
                     android:layout_marginVertical="8dp" />
 
-                <!-- Email Section -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <!-- Icon -->
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -106,7 +100,6 @@
                         android:contentDescription="@string/email_icon"
                         android:layout_marginEnd="8dp" />
 
-                    <!-- Email -->
                     <TextView
                         android:id="@+id/tvEmail"
                         android:layout_width="match_parent"
@@ -121,7 +114,6 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Konten ScrollView -->
     <ScrollView
         android:id="@+id/contentScrollView"
         android:layout_width="match_parent"
@@ -137,7 +129,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Theme Switch Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +157,6 @@
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
-            <!-- Language Switch Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -196,7 +186,6 @@
             </LinearLayout>
             
 
-            <!-- Text "Aesthetic Coming Soon Features" -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -204,7 +193,6 @@
                 android:gravity="bottom|center_horizontal"
                 android:padding="1dp">
 
-                <!-- Text "Aesthetic Coming Soon Features" -->
                 <TextView
                     android:id="@+id/tv_coming_soon"
                     android:layout_width="wrap_content"
@@ -217,7 +205,6 @@
                     android:textSize="14sp"
                     android:textStyle="italic" />
 
-                <!-- Image "drwabalenya pro" -->
                 <ImageView
                     android:id="@+id/image_view"
                     android:layout_width="100dp"
@@ -227,7 +214,6 @@
                     android:contentDescription="@string/image_description"
                     android:layout_gravity="center"/>
 
-                <!-- About Us Section -->
                 <TextView
                     android:id="@+id/tv_about_us"
                     android:layout_width="wrap_content"
@@ -244,7 +230,6 @@
 
     </ScrollView>
 
-    <!-- Tombol Edit Profile dan Logout di bawah -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

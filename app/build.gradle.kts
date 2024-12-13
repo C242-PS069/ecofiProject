@@ -38,8 +38,8 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true // Aktifkan View Binding
-        dataBinding = true // Hanya jika Data Binding diperlukan
+        viewBinding = true
+        dataBinding = true 
     }
 }
 

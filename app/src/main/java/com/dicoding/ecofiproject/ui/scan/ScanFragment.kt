@@ -53,11 +53,9 @@ class ScanFragment : Fragment() {
         btnScan = view.findViewById(R.id.buttonScan)
         btnKreasikan = view.findViewById(R.id.buttonKreasikan)
 
-        // Inisialisasi UserRepository
         val userPreference = UserPreference.getInstance(requireContext().dataStore)
         userRepository = UserRepository.getInstance(userPreference)
 
-        // Launcher untuk memilih gambar dari galeri
         val galleryLauncher =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
                 uri?.let {
@@ -72,7 +70,6 @@ class ScanFragment : Fragment() {
                 }
             }
 
-        // Launcher untuk mengambil gambar dari kamera
         val cameraLauncher =
             registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap: Bitmap? ->
                 bitmap?.let {
@@ -86,17 +83,14 @@ class ScanFragment : Fragment() {
                 }
             }
 
-        // Tombol untuk memilih gambar dari galeri
         btnGallery.setOnClickListener {
             galleryLauncher.launch("image/*")
         }
 
-        // Tombol untuk mengambil gambar dari kamera
         btnScan.setOnClickListener {
             cameraLauncher.launch()
         }
 
-        // Tombol untuk mengirim gambar ke server
         btnKreasikan.setOnClickListener {
             if (imageFile != null && imageFile!!.exists()) {
                 lifecycleScope.launch {
@@ -117,11 +111,9 @@ class ScanFragment : Fragment() {
 
     private suspend fun submitImage(token: String) {
         imageFile?.let { file ->
-            // Buat RequestBody dari file gambar
             val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
             val imagePart = MultipartBody.Part.createFormData("image", file.name, requestBody)
 
-            // Panggil API dengan token dan file gambar
             val apiService = ApiConfig.getApiService()
             val call = apiService.predictImage("Bearer $token", imagePart)
 
@@ -134,14 +126,11 @@ class ScanFragment : Fragment() {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
 
-                        // Pastikan respons tidak null
                         responseBody?.let {
                             val predict = it.predict
                             println("DEBUG_API: $it")
                             val dataItem : ArrayList<com.dicoding.ecofiproject.data.response.DataItem> = it.data as ArrayList<com.dicoding.ecofiproject.data.response.DataItem>
 
-                            // Mengecek apakah prediksi tersedia dan valid
-                            // Mengecek apakah prediksi tersedia dan valid
                             if (predict != null) {
                                 val intent = Intent(requireContext(), RecommendActivity::class.java).apply {
                                     putExtra("MATERIAL", predict.label)  // Label material yang diprediksi

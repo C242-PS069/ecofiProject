@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#F9FAFB">
 
-    <!-- Header -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="0dp"
@@ -38,7 +37,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Section "Bahan Anda" -->
     <androidx.cardview.widget.CardView
         android:id="@+id/material_section"
         android:layout_width="0dp"
@@ -73,7 +71,6 @@
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
-                <!-- Teks Output untuk Bahan -->
                 <TextView
                     android:id="@+id/material_output"
                     android:layout_width="wrap_content"
@@ -85,7 +82,6 @@
                     android:textColor="@android:color/white" />
             </LinearLayout>
 
-            <!-- Teks Akurasi di samping kanan -->
             <TextView
                 android:id="@+id/material_accuracy"
                 android:layout_width="wrap_content"
@@ -99,7 +95,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- List Rekomendasi -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommendation_list"
         android:layout_width="0dp"

@@ -48,40 +48,32 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inisialisasi UserRepository
         val userPreference = UserPreference.getInstance(requireContext().dataStore)
         userRepository = UserRepository.getInstance(userPreference)
 
-        // Mengambil data dari SharedPreferences
         val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "Guest")
         val email = sharedPreferences.getString("email", "example@example.com")
 
-        // Menampilkan nama dan email di UI
         binding.tvUsername.text = username
         binding.tvEmail.text = email
 
-        // Menggunakan Glide untuk memuat gambar profil
         Glide.with(this)
             .load(profileImageUrl)
             .into(binding.ivProfilePicture)
 
-        // Terapkan animasi bounce pada ImageView
         val bounceAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.bounce)
         binding.imageView.startAnimation(bounceAnimation)
 
-        // Listener untuk imageView
         binding.imageView.setOnClickListener {
             val intent = Intent(requireContext(), ProActivity::class.java)
             startActivity(intent)
         }
 
-        // Inisialisasi switch tema
         val themePreferences = (activity as MainActivity).getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
         val isDarkMode = themePreferences.getBoolean("dark_mode", false)
         binding.switchTheme.isChecked = isDarkMode
 
-        // Listener untuk switch tema
         binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
             (activity as MainActivity).saveThemePreference(isChecked)
             if (isChecked) {
@@ -91,28 +83,24 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        // Inisialisasi switch bahasa
         val languagePreferences = requireActivity().getSharedPreferences("language_prefs", Context.MODE_PRIVATE)
         val isIndonesian = languagePreferences.getBoolean("language_indonesia", true)
         binding.switchLanguage.isChecked = isIndonesian
 
-        // Listener untuk switch bahasa
         binding.switchLanguage.setOnCheckedChangeListener { _, isChecked ->
             languagePreferences.edit().putBoolean("language_indonesia", isChecked).apply()
             if (isChecked) {
-                setLocale("id") // Bahasa Indonesia
+                setLocale("id")
             } else {
-                setLocale("en") // Bahasa Inggris
+                setLocale("en")
             }
         }
 
-        // Listener untuk tombol Edit Profile
         binding.btnEditProfile.setOnClickListener {
             val intent = Intent(requireContext(), EditProfileActivity::class.java)
             startActivity(intent)
         }
 
-        // Listener untuk tombol logout
         binding.btnLogout.setOnClickListener {
             logout()
         }

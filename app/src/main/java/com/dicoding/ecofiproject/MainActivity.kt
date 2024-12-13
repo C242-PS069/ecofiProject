@@ -28,19 +28,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inisialisasi SharedPreferences untuk tema
         sharedPreferences = getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
-        // Setel tema berdasarkan preferensi yang tersimpan
         setThemeFromPreferences()
 
-        // Inisialisasi UserRepository untuk memeriksa status login
         val userPreference = UserPreference.getInstance(applicationContext.dataStore)
         userRepository = UserRepository.getInstance(userPreference)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Menampilkan fragment default atau yang sebelumnya disimpan
         if (savedInstanceState == null) {
             loadFragment(HomeFragment()) // Menampilkan HomeFragment jika sudah login
         } else {
@@ -52,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Listener untuk navigasi antar fragment
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> loadFragment(HomeFragment())
@@ -66,7 +61,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        // Cek status login saat aktivitas dimulai
         lifecycleScope.launchWhenStarted {
             userRepository.getSession().collect { user ->
                 if (!user.isLogin) {
@@ -96,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk menyimpan preferensi tema
     fun saveThemePreference(isDarkMode: Boolean) {
         with(sharedPreferences.edit()) {
             putBoolean("dark_mode", isDarkMode)
@@ -106,7 +99,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        // Simpan item yang dipilih saat ini
         outState.putInt(SELECTED_ITEM_KEY, binding.bottomNavigationView.selectedItemId)
     }
 }

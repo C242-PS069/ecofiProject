@@ -5,10 +5,6 @@ import com.dicoding.ecofiproject.data.api.ApiConfig
 import com.dicoding.ecofiproject.data.pref.UserModel
 import com.dicoding.ecofiproject.data.pref.UserPreference
 import com.dicoding.ecofiproject.data.response.*
-import kotlinx.coroutines.flow.map
-import okhttp3.MultipartBody
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
 class UserRepository private constructor(
@@ -45,53 +41,6 @@ class UserRepository private constructor(
         userPreference.logout()
     }
 
-    // Fungsi baru untuk reset password
-    suspend fun resetPassword(email: String): Response<ResetPasswordResponse> {
-        return try {
-            val requestBody = mapOf("email" to email)
-            val response = ApiConfig.getApiService().resetPassword(requestBody)
-            Log.d("UserRepository", "Reset password response: $response")
-            response
-        } catch (e: Exception) {
-            throw Exception("Network request failed: ${e.message}")
-        }
-    }
-
-    // Fungsi baru untuk edit profile
-    suspend fun editProfile(
-        newUsername: String?,
-        oldPassword: String?,
-        newPassword: String?,
-        email: String
-    ): Response<EditProfileResponse> {
-        return try {
-            val request = EditProfileRequest(newUsername, oldPassword, newPassword, email)
-            val response = ApiConfig.getApiService().editProfile(request)
-            Log.d("UserRepository", "Edit profile response: $response")
-            response
-        } catch (e: Exception) {
-            throw Exception("Network request failed: ${e.message}")
-        }
-    }
-
-    fun predictImage(image: MultipartBody.Part): Call<PredictionResponse> {
-        // Ambil token dari session pengguna yang sudah login
-        val token = userPreference.getSession().map { it.token }.toString()
-
-        // Pastikan token valid
-        if (token.isNotEmpty()) {
-            // Panggil API dengan menambahkan token ke header Authorization
-            return ApiConfig.getApiService().predictImage("Bearer $token", image)
-        } else {
-            throw Exception("User is not authenticated")
-        }
-    }
-
-
-    // Fungsi baru untuk mendapatkan detail prediksi
-    suspend fun getRecycleDetails(id: Int): Response<RecycleDetailsResponse> {
-        return ApiConfig.getApiService().getRecycleById(id)
-    }
 
     companion object {
         @Volatile

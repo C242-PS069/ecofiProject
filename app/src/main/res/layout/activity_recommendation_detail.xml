@@ -1,5 +1,5 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,9 +7,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="0dp">
 
-        <!-- Title -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/rounded_bottom"
+                app:navigationIcon="@drawable/ic_back"
+                app:title="Mari Kreasikan"
+                app:titleTextColor="@android:color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/recommendationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Judul"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/recommendationVideo"
             android:layout_width="match_parent"
@@ -17,57 +41,41 @@
             android:layout_marginBottom="16dp" />
 
         <TextView
-            android:id="@+id/recommendationTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Judul"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Description -->
-        <TextView
             android:id="@+id/recommendationDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deskripsi"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:text="Deskripsi" />
 
-        <!-- Tools Title -->
         <TextView
             android:id="@+id/toolsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:text="Bahan dan Alat"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp" />
+            android:textStyle="bold" />
 
-        <!-- Tools List -->
         <TextView
             android:id="@+id/toolsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List bahan dan alat"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:text="List bahan dan alat" />
 
-        <!-- Steps Title -->
         <TextView
             android:id="@+id/makesTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:text="Langkah-langkah"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp" />
+            android:textStyle="bold" />
 
-        <!-- Steps List -->
         <TextView
             android:id="@+id/makesSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Langkah-langkah pembuatan"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Video Player -->
+            android:layout_marginBottom="16dp"
+            android:text="Langkah-langkah pembuatan" />
 
     </LinearLayout>
 </ScrollView>

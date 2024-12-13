@@ -32,11 +32,9 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setup view dan action
         setupView()
         setupAction()
 
-        // Terapkan animasi
         applyAnimations()
     }
 
@@ -45,41 +43,33 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        // Menangani klik tombol register
         binding.registerButton.setOnClickListener {
             val name = binding.nameInput.text.toString()
             val email = binding.emailInput.text.toString()
             val password = binding.passwordInput.text.toString()
 
-            // Validasi input
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Validasi panjang password
             if (password.length < 8) {
                 Toast.makeText(this, "Password harus memiliki minimal 8 karakter", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Panggil fungsi register dari ViewModel
             registerViewModel.register(name, email, password)
         }
 
-        // Menangani live data dari ViewModel
         registerViewModel.registerResult.observe(this, Observer { result ->
             when (result) {
                 is Result.Loading -> {
-                    // Menampilkan loading saat proses pendaftaran
                     showLoading(true)
                 }
 
                 is Result.Success -> {
-                    // Menyembunyikan loading dan menampilkan pesan sukses
                     showLoading(false)
 
-                    // Simpan data user ke SharedPreferences
                     val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
                     editor.putString("username", binding.nameInput.text.toString())
@@ -88,9 +78,8 @@ class RegisterActivity : AppCompatActivity() {
 
                     AlertDialog.Builder(this).apply {
                         setTitle("Selamat!")
-                        setMessage(result.data) // Menampilkan pesan sukses dari result
+                        setMessage(result.data)
                         setPositiveButton("OK") { _, _ ->
-                            // Pindah ke LoginActivity setelah OK ditekan
                             val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
@@ -102,11 +91,10 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
                 is Result.Error -> {
-                    // Menyembunyikan loading dan menampilkan pesan error
                     showLoading(false)
                     AlertDialog.Builder(this).apply {
                         setTitle("Error")
-                        setMessage("Maaf, register gagal. Ulang lagi ya.") // Pesan error
+                        setMessage("Maaf, register gagal. Ulang lagi ya.")
                         setPositiveButton("OK", null)
                         create()
                         show()
@@ -114,7 +102,6 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
                 else -> {
-                    // Penanganan jika result tidak sesuai dengan tipe yang diharapkan
                     showLoading(false)
                     AlertDialog.Builder(this).apply {
                         setTitle("Unexpected Error")
@@ -127,7 +114,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
-        // Menangani klik "Already have an account?"
         binding.loginText.setOnClickListener {
             // Pindah ke LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
@@ -135,7 +121,6 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
 
-        // Menangani klik ikon visibility
         binding.eyeIcon.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
             updatePasswordVisibility()
@@ -150,7 +135,6 @@ class RegisterActivity : AppCompatActivity() {
             binding.passwordInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             binding.eyeIcon.setImageResource(R.drawable.ic_visibility_off)
         }
-        // Set cursor di akhir teks setelah mengubah tipe input
         binding.passwordInput.setSelection(binding.passwordInput.text.length)
     }
 
@@ -159,12 +143,10 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun applyAnimations() {
-        // Logo bergerak kanan kiri
         val logoImage = binding.logoImage
         val logoAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.move_logo)
         logoImage.startAnimation(logoAnim)
 
-        // Tombol register dengan animasi scale
         val registerButton = binding.registerButton
         val scaleAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_button)
         registerButton.startAnimation(scaleAnim)

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- Bagian atas -->
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
@@ -27,26 +26,27 @@
         app:layout_constraintTop_toBottomOf="parent">
 
         <ImageView
-        android:id="@+id/button_kreasikan"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/ic_kreasikan" />
+            android:id="@+id/button_kreasikan"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_kreasikan" />
 
         <ImageView
             android:id="@+id/button_user_engagement"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_user_engagement" />
 
         <ImageView
             android:id="@+id/button_bank_sampah"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_bank_sampah" />
 
@@ -62,7 +62,7 @@
             android:id="@+id/imageView"
             android:layout_width="80dp"
             android:layout_height="65dp"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="1dp"
             app:srcCompat="@drawable/logo" />
 
@@ -72,7 +72,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="55dp"
         android:text="#Mari Kreasikan Sampahmu\n Menjadi Lebih Bermanfaat"
         android:textColor="@color/white"
@@ -91,7 +91,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
             android:text="Artikel"
@@ -117,10 +117,10 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Indormasi"
+                android:text="Informasi"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
@@ -136,7 +136,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- FrameLayout tambahan untuk navigasi fragment -->
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -154,8 +153,9 @@
         android:id="@+id/button_about"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="350dp"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="TODO"
         app:srcCompat="@drawable/ic_information" />
 
 </RelativeLayout>

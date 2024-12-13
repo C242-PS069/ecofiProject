@@ -1,10 +1,8 @@
 <resources>
-    <!-- General Strings -->
     <string name="app_name">Ecofy</string>
     <string name="save_changes">Simpan perubahan</string>
     <string name="edit_profile">Edit Password</string>
 
-    <!-- Home Section -->
     <string name="article_cover">Sampul Artikel</string>
     <string name="article_title">Judul Artikel</string>
     <string name="article_cover_description">Gambar yang mewakili sampul artikel</string>
@@ -13,7 +11,6 @@
     <string name="read_more_description">Ketuk untuk membaca artikel lengkap</string>
     <string name="card_description">Kartu yang dapat diklik dengan detail artikel</string>
 
-    <!-- Profile Section -->
     <string name="profile_picture">Foto Profil</string>
     <string name="edit_picture">Edit Foto</string>
     <string name="profile_settings">Profil Saya</string>
@@ -21,21 +18,17 @@
     <string name="email">Email</string>
     <string name="theme">Berpindah ke mode gelap</string>
 
-    <!-- Messages -->
     <string name="changes_saved">Perubahan Anda telah disimpan dengan sukses.</string>
     <string name="invalid_email">Harap masukkan alamat email yang valid.</string>
     <string name="empty_name">Nama tidak boleh kosong.</string>
     <string name="saving_changes">Menyimpan perubahan...</string>
 
-    <!-- Bottom Navigation -->
     <string name="nav_home">Beranda</string>
     <string name="nav_scan">Pindai</string>
     <string name="nav_profile">Profil</string>
 
-    <!-- Material Icon -->
     <string name="material_icon">Ikon Material</string>
 
-    <!-- Back Icon -->
     <string name="back_icon">Ikon Kembali</string>
     <string name="camera">Kamera</string>
     <string name="gallery">Galeri</string>

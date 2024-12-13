@@ -64,7 +64,6 @@ class HomeFragment : Fragment() {
             try {
                 val context = context ?: return@launch
 
-                // Ambil token dari UserPreference
                 val session = UserPreference.getInstance(context.dataStore).getSession().first()
                 if (session.token.isNotEmpty()) {
                     val response = ApiConfig.getApiService(session.token).getAllArticles()
@@ -75,7 +74,11 @@ class HomeFragment : Fragment() {
                         Toast.makeText(context, "Gagal memuat artikel", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(context, "Token tidak ditemukan, silakan login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Token tidak ditemukan, silakan login",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } catch (e: Exception) {
                 val context = context ?: return@launch
@@ -89,7 +92,6 @@ class HomeFragment : Fragment() {
             try {
                 val context = context ?: return@launch
 
-                // Ambil token dari UserPreference
                 val session = UserPreference.getInstance(context.dataStore).getSession().first()
                 if (session.token.isNotEmpty()) {
                     val response = ApiConfig.getApiService(session.token).getAllBanners()
@@ -100,7 +102,11 @@ class HomeFragment : Fragment() {
                         Toast.makeText(context, "Gagal memuat banner", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(context, "Token tidak ditemukan, silakan login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Token tidak ditemukan, silakan login",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } catch (e: Exception) {
                 val context = context ?: return@launch

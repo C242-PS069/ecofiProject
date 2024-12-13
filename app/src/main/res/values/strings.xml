@@ -1,10 +1,8 @@
 <resources>
-    <!-- General Strings -->
     <string name="app_name">Ecofy</string>
     <string name="save_changes">Save changes</string>
     <string name="edit_profile">Edit Password</string>
 
-    <!-- Home Section -->
     <string name="article_cover">Article Cover</string>
     <string name="article_title">Article Title</string>
     <string name="article_cover_description">Image representing the article cover</string>
@@ -13,7 +11,6 @@
     <string name="read_more_description">Tap to read the full article</string>
     <string name="card_description">Clickable card with article details</string>
 
-    <!-- Profile Section -->
     <string name="profile_picture">Profile Picture</string>
     <string name="edit_picture">Edit Picture</string>
     <string name="profile_settings">My Profile</string>
@@ -21,21 +18,17 @@
     <string name="email">Email</string>
     <string name="theme">Switch to dark mode</string>
 
-    <!-- Messages -->
     <string name="changes_saved">Your changes have been saved successfully.</string>
     <string name="invalid_email">Please enter a valid email address.</string>
     <string name="empty_name">Name cannot be empty.</string>
     <string name="saving_changes">Saving changes...</string>
 
-    <!-- Bottom Navigation -->
     <string name="nav_home">Home</string>
     <string name="nav_scan">Scan</string>
     <string name="nav_profile">Profile</string>
 
-    <!-- Material Icon -->
     <string name="material_icon">Material Icon</string>
 
-    <!-- Back Icon -->
     <string name="back_icon">Back Icon</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>

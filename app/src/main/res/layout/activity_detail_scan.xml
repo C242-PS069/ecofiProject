@@ -6,7 +6,6 @@
     android:background="@color/white"
     android:padding="16dp">
 
-    <!-- Tombol Back -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +31,6 @@
             android:textColor="@android:color/black" />
     </RelativeLayout>
 
-    <!-- Hasil Scan / Upload -->
     <ImageView
         android:id="@+id/scan_result_image"
         android:layout_width="match_parent"
@@ -42,7 +40,6 @@
         android:contentDescription="Hasil Scan"
         android:layout_marginBottom="16dp" />
 
-    <!-- Label Detected Ingredients -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,14 +49,12 @@
         android:layout_marginBottom="8dp"
         android:textColor="@android:color/black" />
 
-    <!-- Hasil Deteksi -->
     <LinearLayout
         android:id="@+id/detected_items_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Contoh hasil scan dengan ikon -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,7 +121,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Tombol Submit -->
     <LinearLayout
         android:id="@+id/button_submit"
         android:layout_width="match_parent"

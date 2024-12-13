@@ -18,34 +18,27 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.onboarding_screen)
 
-        // Membuat layar fullscreen
         supportActionBar?.hide()
 
-        // Inisialisasi SharedPreferences
         sharedPreferences = getSharedPreferences("OnboardingPrefs", MODE_PRIVATE)
 
-        // Inisialisasi ImageSlider
         val imageSlider = findViewById<ImageSlider>(R.id.onboarding_image)
         val skipButton = findViewById<Button>(R.id.skip_button)
 
-        // Menambahkan gambar dari drawable ke slider
         val imageList = ArrayList<SlideModel>()
-        imageList.add(SlideModel(R.drawable.onboarding_1,  ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.onboarding_2,  ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.onboarding_3,  ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.onboarding_1, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.onboarding_2, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.onboarding_3, ScaleTypes.FIT))
         imageSlider.setImageList(imageList, ScaleTypes.FIT)
 
-        // Tombol Skip untuk melewati onboarding
         skipButton.setOnClickListener {
             finishOnboarding()
         }
     }
 
     private fun finishOnboarding() {
-        // Tandai onboarding telah selesai di SharedPreferences
         sharedPreferences.edit().putBoolean("OnboardingCompleted", true).apply()
 
-        // Pindah ke LoginActivity
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()

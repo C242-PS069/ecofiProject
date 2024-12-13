@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Logo/Image -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="180dp"

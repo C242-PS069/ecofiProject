@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.scan.ScanFragment">
 
-    <!-- Header AppBar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -30,7 +29,6 @@
             android:layout_marginBottom="16dp" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- ImageView untuk menampilkan gambar -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
@@ -43,7 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_place_holder" />
 
-    <!-- Langkah-langkah Prosedur -->
     <TextView
         android:id="@+id/tvProcedure"
         android:layout_width="0dp"
@@ -60,7 +57,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Tombol Scan -->
 
     <ImageView
         android:id="@+id/image_view"
@@ -87,7 +83,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- LinearLayout untuk tombol Camera dan Gallery -->
     <LinearLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
@@ -99,7 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Tombol Camera -->
         <Button
             android:id="@+id/buttonScan"
             android:layout_width="0dp"
@@ -113,7 +107,6 @@
             android:drawablePadding="8dp"
             android:backgroundTint="#329EAA" />
 
-        <!-- Tombol Gallery -->
         <Button
             android:id="@+id/buttonGallery"
             android:layout_width="0dp"

@@ -26,7 +26,6 @@ class DetailArticleActivity : AppCompatActivity() {
         binding = ActivityDetailArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ambil ID Artikel dari Intent
         articleId = intent.getIntExtra(EXTRA_ARTICLE_ID, -1)
         if (articleId == -1) {
             Toast.makeText(this, "Artikel tidak valid", Toast.LENGTH_SHORT).show()
@@ -47,13 +46,25 @@ class DetailArticleActivity : AppCompatActivity() {
                         val articleDetail = response.body()!!.data
                         showArticleDetail(articleDetail)
                     } else {
-                        Toast.makeText(this@DetailArticleActivity, "Gagal memuat detail artikel", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@DetailArticleActivity,
+                            "Gagal memuat detail artikel",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(this@DetailArticleActivity, "Token tidak ditemukan, silakan login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@DetailArticleActivity,
+                        "Token tidak ditemukan, silakan login",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@DetailArticleActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@DetailArticleActivity,
+                    "Error: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -65,21 +76,18 @@ class DetailArticleActivity : AppCompatActivity() {
         val youTubePlayerView = findViewById<YouTubePlayerView>(R.id.article_vidio)
         lifecycle.addObserver(youTubePlayerView)
 
-        // Dapatkan URL video dari API
         val videoUrl = articleDetail.video
 
         if (videoUrl.isNullOrBlank()) {
             Toast.makeText(this, "URL video tidak tersedia", Toast.LENGTH_SHORT).show()
         } else {
-            // Ekstrak ID video dari URL
             val videoId = extractVideoId(videoUrl)
             if (videoId.isNullOrBlank()) {
                 Toast.makeText(this, "ID video tidak valid", Toast.LENGTH_SHORT).show()
             } else {
-                // Tambahkan listener ke YouTubePlayerView
-                youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                youTubePlayerView.addYouTubePlayerListener(object :
+                    AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
-                        // Muat video berdasarkan ID
                         youTubePlayer.loadVideo(videoId, 0f)
                     }
                 })
@@ -87,7 +95,6 @@ class DetailArticleActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk mengekstrak ID video dari URL
     private fun extractVideoId(videoUrl: String): String? {
         val regex = "(?<=v=|youtu\\.be/|embed/|watch\\?v=)([^&?\\n]+)".toRegex()
         return regex.find(videoUrl)?.value

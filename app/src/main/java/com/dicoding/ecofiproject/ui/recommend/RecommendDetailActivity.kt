@@ -55,23 +55,19 @@ class RecommendDetailActivity : AppCompatActivity() {
     }
 
     private fun displayDetails(recycleData: RecycleData) {
-        // Set judul dan deskripsi
         binding.recommendationTitle.text = recycleData.title
         binding.recommendationDescription.text = recycleData.description
 
-        // Menampilkan bahan dan alat
         val tools = recycleData.tools
         val materialsToolsText = tools.materialsTools.joinToString(separator = "\n") { "- $it" }
         binding.toolsTitle.text = tools.title
         binding.toolsList.text = materialsToolsText
 
-        // Menampilkan langkah pembuatan
         val makes = recycleData.makes
         val stepsText = makes.step.joinToString(separator = "\n") { "- $it" }
         binding.makesTitle.text = makes.title
         binding.makesSteps.text = stepsText
 
-        // Memastikan video ditampilkan dengan benar
         val youTubePlayerView = binding.recommendationVideo
         lifecycle.addObserver(youTubePlayerView)
 

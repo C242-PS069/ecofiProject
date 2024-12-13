@@ -6,7 +6,6 @@
     android:gravity="center"
     android:background="#FFFFFF">
 
-    <!-- Tombol kembali -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="48dp"
@@ -15,7 +14,6 @@
         android:src="@drawable/ic_close"
         android:contentDescription="@string/back_button_description" />
 
-    <!-- Gambar utama -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

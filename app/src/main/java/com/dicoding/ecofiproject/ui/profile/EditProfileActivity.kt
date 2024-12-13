@@ -24,7 +24,6 @@ class EditProfileActivity : AppCompatActivity() {
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inisialisasi UserPreference
         userPreference = UserPreference.getInstance(applicationContext.dataStore)
 
         setupToolbar()

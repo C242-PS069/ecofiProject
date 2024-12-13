@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
-    // Fungsi untuk menyimpan sesi pengguna ke preference
     fun saveSession(user: UserModel) {
         viewModelScope.launch {
             repository.saveSession(user) // Menyimpan sesi menggunakan repository
@@ -17,7 +16,6 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
-    // Fungsi login yang menerima email dan password, dan memberikan callback untuk menangani hasil login
     fun login(email: String, password: String, callback: (Boolean, String?) -> Unit) {
         viewModelScope.launch {
             try {
@@ -32,7 +30,7 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
                             token = token,
                             isLogin = true
                         )
-                        saveSession(userModel)  // Simpan sesi pengguna setelah login sukses
+                        saveSession(userModel)
                         Log.d("LoginViewModel", "Login successful: Token=$token")
                         callback(true, token)
                     } else {
