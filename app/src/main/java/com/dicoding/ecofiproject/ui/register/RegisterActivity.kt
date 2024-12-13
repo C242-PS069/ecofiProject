@@ -57,6 +57,12 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Validasi panjang password
+            if (password.length < 8) {
+                Toast.makeText(this, "Password harus memiliki minimal 8 karakter", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             // Panggil fungsi register dari ViewModel
             registerViewModel.register(name, email, password)
         }
@@ -79,7 +85,6 @@ class RegisterActivity : AppCompatActivity() {
                     editor.putString("username", binding.nameInput.text.toString())
                     editor.putString("email", binding.emailInput.text.toString())
                     editor.apply()
-
 
                     AlertDialog.Builder(this).apply {
                         setTitle("Selamat!")

@@ -59,11 +59,19 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
 
+            // Check if email or password is empty
             if (email.isEmpty() || password.isEmpty()) {
                 showErrorDialog("Email dan password tidak boleh kosong!")
                 return@setOnClickListener
             }
 
+            // Check if password length is less than 8 characters
+            if (password.length < 8) {
+                showErrorDialog("Password harus memiliki minimal 8 karakter!")
+                return@setOnClickListener
+            }
+
+            // Proceed with login
             showLoading(true)
             loginViewModel.login(email, password) { isSuccess, message ->
                 showLoading(false)
@@ -75,15 +83,18 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        // Redirect to RegisterActivity when the "Register" text is clicked
         binding.registerText.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
             finish()
         }
 
+        // Toggle password visibility when the eye icon is clicked
         binding.eyeIcon.setOnClickListener {
             togglePasswordVisibility()
         }
     }
+
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE

@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
+import com.dicoding.ecofiproject.R
 
 class MyEditPassword @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -17,15 +18,17 @@ class MyEditPassword @JvmOverloads constructor(
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString().isEmpty() || s.toString().length < 8) {
-                    setError("Password tidak boleh kurang dari 8 karakter", null)
-                } else {
-                    error = null
-                }
+                // Do nothing.
             }
 
             override fun afterTextChanged(s: Editable?) {
-                // Do nothing.
+                s?.let {
+                    if (it.isEmpty() || it.length < 8) {
+                        error = context.getString(R.string.password_error) // Error dari strings.xml
+                    } else {
+                        error = null
+                    }
+                }
             }
         })
     }
