@@ -71,5 +71,6 @@
     <string name="gamifikasi_leveling"><![CDATA[Gamifikasi & Leveling]]></string>
     <string name="app">Ayo Mari bersama sama membuat lingkungan yang sehat dengan kerajinan yang hebat\n</string>
     <string name="back_button_description">tutup</string>
+    <string name="password_error"><![CDATA[<string name=\"password_error\">Password tidak boleh kurang dari 8 karakter</string>\n]]></string>
 
 </resources>
