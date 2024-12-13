@@ -34,6 +34,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.onboarding.OnboardingActivity" android:exported="false" />
+
         <!-- Set LoginActivity as internal only -->
         <activity
             android:name=".ui.login.LoginActivity"
@@ -70,6 +72,8 @@
         <activity android:name=".ui.pro.ProActivity">
 
         </activity>
+
+
 
 
     </application>

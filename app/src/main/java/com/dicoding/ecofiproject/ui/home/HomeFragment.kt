@@ -16,7 +16,7 @@ import com.dicoding.ecofiproject.data.pref.dataStore
 import com.dicoding.ecofiproject.data.response.ArticlesResponse
 import com.dicoding.ecofiproject.data.response.BannersResponse
 import com.dicoding.ecofiproject.databinding.FragmentHomeBinding
-import com.dicoding.ecofiproject.ui.home.DetailArticleActivity
+import com.dicoding.ecofiproject.ui.pro.ProActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -37,6 +37,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         loadArticles()
         loadBanners()
+
+        // Tambahkan onClickListener untuk button_kreasikan
+        binding.buttonKreasikan.setOnClickListener {
+            val intent = Intent(requireContext(), ProActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loadArticles() {

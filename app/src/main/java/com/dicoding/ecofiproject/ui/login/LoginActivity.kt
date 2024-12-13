@@ -1,13 +1,12 @@
 package com.dicoding.ecofiproject.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ import com.dicoding.ecofiproject.MainActivity
 import com.dicoding.ecofiproject.R
 import com.dicoding.ecofiproject.ViewModelFactory
 import com.dicoding.ecofiproject.databinding.ActivityLoginBinding
+import com.dicoding.ecofiproject.ui.onboarding.OnboardingActivity
 import com.dicoding.ecofiproject.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -31,12 +31,23 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setup view dan action
+        // Cek apakah onboarding perlu ditampilkan
+        checkOnboarding()
+
         setupView()
         setupActions()
+    }
 
-        // Terapkan animasi
-        applyAnimations()
+    private fun checkOnboarding() {
+        val sharedPreferences = getSharedPreferences("OnboardingPrefs", Context.MODE_PRIVATE)
+        val isOnboardingCompleted = sharedPreferences.getBoolean("OnboardingCompleted", false)
+
+        if (!isOnboardingCompleted) {
+            // Jika onboarding belum selesai, buka OnboardingActivity
+            val intent = Intent(this, OnboardingActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun setupView() {
@@ -92,8 +103,8 @@ class LoginActivity : AppCompatActivity() {
     private fun togglePasswordVisibility() {
         isPasswordVisible = !isPasswordVisible
 
-        val passwordField = binding.edLoginPassword
-        val eyeIcon = binding.eyeIcon
+        val passwordField: EditText = binding.edLoginPassword
+        val eyeIcon: ImageView = binding.eyeIcon
 
         if (isPasswordVisible) {
             passwordField.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
@@ -129,27 +140,5 @@ class LoginActivity : AppCompatActivity() {
             create()
             show()
         }
-    }
-
-    private fun applyAnimations() {
-        // Logo bergerak kanan kiri
-        val logoImage: ImageView = binding.logoImage
-        val logoAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.move_logo)
-        logoImage.startAnimation(logoAnim)
-
-        // Teks "Welcome" fade-in
-        val welcomeText: TextView = binding.welcomeText
-        val welcomeAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        welcomeText.startAnimation(welcomeAnim)
-
-        // Teks "Quotes" fade-in
-        val subtitleText: TextView = binding.subtitleText
-        val subtitleAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        subtitleText.startAnimation(subtitleAnim)
-
-        // Tombol login dengan animasi scale
-        val loginButton: Button = binding.loginButton
-        val scaleAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_button)
-        loginButton.startAnimation(scaleAnim)
     }
 }
