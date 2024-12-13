@@ -22,14 +22,14 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
 
                 if (result.isSuccessful) {
                     _registerResult.value = Result.Success(data = "Registration successful")
-                    Log.d("Register", "Registration successful for $email")  // Menambahkan log sukses
+                    Log.d("Register", "Registration successful for $email")
                 } else {
                     _registerResult.value = Result.Error(result.message())
-                    Log.e("Register", "Registration failed: ${result.message()}")  // Menambahkan log error
+                    Log.e("Register", "Registration failed: ${result.message()}")
                 }
             } catch (e: Exception) {
                 _registerResult.value = Result.Error(e.message ?: "Unknown error")
-                Log.e("Register", "Error during registration: ${e.message ?: "Unknown error"}")  // Menambahkan log untuk error exception
+                Log.e("Register", "Error during registration: ${e.message ?: "Unknown error"}")
             }
 
         }
