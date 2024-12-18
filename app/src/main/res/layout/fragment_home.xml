@@ -29,7 +29,7 @@
             android:id="@+id/button_kreasikan"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
             android:contentDescription="TODO"
             android:src="@drawable/ic_kreasikan" />
@@ -38,7 +38,8 @@
             android:id="@+id/button_user_engagement"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="25dp"
+
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_user_engagement" />
 
@@ -46,7 +47,8 @@
             android:id="@+id/button_bank_sampah"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="30dp"
+
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_bank_sampah" />
 
@@ -153,7 +155,7 @@
         android:id="@+id/button_about"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="300dp"
+        android:layout_marginStart="350dp"
         android:layout_marginTop="8dp"
         android:contentDescription="TODO"
         app:srcCompat="@drawable/ic_information" />
